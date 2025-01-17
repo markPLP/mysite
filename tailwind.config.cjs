@@ -6,6 +6,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #ec4899, #8b5cf6)', // Matches the Tailwind classes
+        'custom-gradient-hover': 'linear-gradient(to right, #ff758c, #ff3c61)', // Matches the Tailwind classes
       },
       fontFamily: {
         heading: ['Roboto Condensed', 'serif'],
