@@ -1,5 +1,5 @@
 import Header from './components/navbar/Header';
-import HeroBanner from './components/HeroBanner';
+import HeroBanner from './components/hero/HeroBanner';
 import Navbar from './components/navbar/Navbar';
 import { ThemeProvider } from './components/theme-provider';
 import { SidebarProvider } from './context/SidebarContext';
