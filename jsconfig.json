@@ -1,9 +1,15 @@
 {
+  // "compilerOptions": {
+  //   "baseUrl": "./src",
+  //   "paths": {
+  //     "@/components/*": ["components/*"],
+  //     "@/lib/*": ["lib/*"]
+  //   }
+  // }
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"]
+      "@/*": ["./src/*"]
     }
   }
 }
