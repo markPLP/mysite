@@ -26,7 +26,7 @@ const NavbarMobile = () => {
   return (
     <div
       className="md:hidden fixed bottom-0 flex justify-center items-center w-full bg-primary"
-      style={{ boxShadow: '0 -8px 0 0 red' }}
+      style={{ boxShadow: '0 -8px 0 0 #0c0a09' }}
     >
       <div className="relative flex items-center px-5 w-[375px]">
         <ul className="flex justify-between w-full">
@@ -46,7 +46,7 @@ const NavbarMobile = () => {
                   className="relative flex flex-col justify-center items-center text-center"
                 >
                   <i
-                    className={`w-6 h-6 block transition-all ${
+                    className={`w-6 h-6 block transition-all duration-1000 ${
                       activeIndex === index
                         ? '-translate-y-[25px] text-white w-5 h-5 '
                         : 'text-[#222327]'
@@ -69,14 +69,14 @@ const NavbarMobile = () => {
           })}
 
           <li
-            className="absolute w-[50px] h-[50px] top-[-50%] rounded-full border-4 border-[#222327] bg-custom-gradient transition-transform z-0"
+            className="absolute w-[50px] h-[50px] top-[-50%] rounded-full border-4 border-[#0c0a09] bg-custom-gradient transition-transform duration-500 z-0"
             style={{
               transform: calculateTransform(activeIndex),
             }}
           >
             <span
               style={{
-                boxShadow: '1px -7px 0 0 #222327',
+                boxShadow: '1px -7px 0 0 #0c0a09',
                 textIndent: '-9999px',
               }}
               className="w-5 h-5 absolute top-1/2 left-[-20px] rounded-tr-[20px] transparent text-indent-[-9999px]"
@@ -85,7 +85,7 @@ const NavbarMobile = () => {
             </span>
             <span
               style={{
-                boxShadow: '-1px -7px 0 0 #222327',
+                boxShadow: '-1px -7px 0 0 #0c0a09',
                 textIndent: '-9999px',
               }}
               className="w-5 h-5 absolute top-1/2 right-[-20px] rounded-tl-[20px] bg-transparent text-indent-[-9999px]"
