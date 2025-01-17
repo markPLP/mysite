@@ -25,10 +25,10 @@ const NavbarMobile = () => {
 
   return (
     <div
-      className="sm:hidden fixed bottom-0 flex justify-center items-center bg-[#222327] w-full"
+      className="md:hidden fixed bottom-0 flex justify-center items-center w-full bg-primary"
       style={{ boxShadow: '0 -8px 0 0 red' }}
     >
-      <div className="relative flex items-center px-5 bg-primary w-full">
+      <div className="relative flex items-center px-5 w-[375px]">
         <ul className="flex justify-between w-full">
           {links.map((item, index) => {
             const { id, href, text, icon } = item;

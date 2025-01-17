@@ -4,7 +4,7 @@ import {
   faGithub,
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
-import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
+//import { faBarsStaggered } from '@fortawesome/free-solid-svg-icons';
 
 import { Button } from '../ui/button';
 import { DarkMode } from '../DarkMode';
@@ -13,22 +13,22 @@ import { DarkMode } from '../DarkMode';
 const Header = () => {
   //const { toggleSidebar } = useSidebar();
   return (
-    <header className="relative">
+    <header className="relative z-10">
       <nav className="fixed top-0 px-5 gap-4 flex items-center justify-end py-4 w-full">
-        <ul className="flex gap-2">
+        <ul className="flex gap-2 items-center">
           <li>
-            <Button variant="link" className="p-0">
-              <FontAwesomeIcon className="text-cyan-800" icon={faFacebook} />
+            <Button variant="link" className="p-0 ">
+              <FontAwesomeIcon className="!w-8 !h-8" icon={faFacebook} />
             </Button>
           </li>
           <li>
             <Button variant="link" className="p-0">
-              <FontAwesomeIcon icon={faLinkedin} />
+              <FontAwesomeIcon className="!w-8 !h-8" icon={faLinkedin} />
             </Button>
           </li>
           <li>
             <Button variant="link" className="p-0">
-              <FontAwesomeIcon icon={faGithub} />
+              <FontAwesomeIcon className="!w-8 !h-8" icon={faGithub} />
             </Button>
           </li>
         </ul>
