@@ -77,6 +77,9 @@
   h6 {
     @apply font-heading;
   }
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 @layer components {
