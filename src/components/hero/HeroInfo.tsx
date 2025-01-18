@@ -29,7 +29,7 @@ const profile_info = {
   },
 };
 
-const HeroInfo = ({ className }) => {
+const HeroInfo = ({ className }: { className: string }) => {
   return (
     <div className={className}>
       {/* Sidebar */}

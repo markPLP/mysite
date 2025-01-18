@@ -1,6 +1,9 @@
-import { Button } from '../ui/button';
+type AboutButtonProps = {
+  data: { id: string; label: string }[];
+  setCurrentItem: (id: string) => void;
+};
 
-const AboutButton = ({ data, setCurrentItem }) => {
+const AboutButton = ({ data, setCurrentItem }: AboutButtonProps) => {
   return (
     <div className="flex flex-col gap-4">
       {data?.map((item) => {

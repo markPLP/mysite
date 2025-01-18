@@ -94,24 +94,24 @@ export const aboutData = [
     label: 'site info',
     title: 'Tech stack',
     description: [
-      "This portfolio reflects my web development skills and dedication to delivering top-quality websites. Please don't hesitate to reach out if you need one too. Here's my tech stack for this project:",
+      "This portfolio showcases my web development expertise and commitment to creating high-quality websites. Feel free to reach out if you're interested in having one built as well. Here’s the tech stack I used for this project:",
       {
         type: 'list',
         items: [
-          'Next.js: SEO-friendly, fast-loading sites.',
+          'React: Efficient component-based architecture.',
           'TypeScript: Error prevention and code readability.',
+          'Shadcn/ui: Customizable, responsive components.',
           'Tailwind CSS: Stylish designs without custom CSS.',
           'GraphQL: Efficient data retrieval.',
           'Contentful: Easy content management.',
-          'Yarn: Smooth dependency management.',
+          'Vite: Smooth dependency management.',
         ],
       },
       "I've also prioritized:",
       {
         type: 'list',
-        items: ['Accessibility (a11y).', 'Clean, modern UI.', 'Seamless UX.'],
+        items: ['Accessibility.', 'Clean, modern UI.', 'Seamless UX.'],
       },
-      "Thank you for visiting my portfolio website. Whether you're here to explore my work, seek inspiration, or discuss potential collaborations, I'm excited to have you here. Feel free to reach out, and let's embark on a journey of creativity and innovation together.",
     ],
   },
 ];

@@ -4,7 +4,7 @@ import { links } from '../../utils/data';
 const NavbarMobile = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const calculateTransform = (index) => {
+  const calculateTransform = (index: number) => {
     switch (index) {
       case 0:
         return 'translateX(calc(50px * 0))';

@@ -1,8 +1,22 @@
-const AboutInfo = ({ currentItemId, data }) => {
+import { AboutData } from '@/utils/types';
+
+type AboutInfoProps = {
+  currentItemId: string | null;
+  data: AboutData[];
+};
+
+const AboutInfo = ({ currentItemId, data }: AboutInfoProps) => {
   const currentItem = data.filter((item) => item.id === currentItemId);
   console.log(currentItem);
 
-  const renderDescription = (description) => {
+  type DescriptionItem = {
+    type: string;
+    items: string[];
+  };
+
+  const renderDescription = (
+    description: string | (string | DescriptionItem)[]
+  ) => {
     if (Array.isArray(description)) {
       return description.map((item, index) => {
         if (typeof item === 'string') {
@@ -13,10 +27,10 @@ const AboutInfo = ({ currentItemId, data }) => {
           );
         }
 
-        if (item.type === 'list') {
+        if ((item as DescriptionItem).type === 'list') {
           return (
             <ul key={index} className="list-disc pl-5 mb-4">
-              {item.items.map((listItem, listIndex) => (
+              {(item as DescriptionItem).items.map((listItem, listIndex) => (
                 <li key={listIndex}>{listItem}</li>
               ))}
             </ul>
@@ -39,7 +53,6 @@ const AboutInfo = ({ currentItemId, data }) => {
               {title}
             </h2>
             {renderDescription(description)}
-            {/* <p>{description}</p> */}
           </div>
         );
       })}

@@ -4,7 +4,9 @@ import AboutButton from './AboutButton';
 import AboutInfo from './AboutInfo';
 const About = () => {
   //const [data, setData] = useState(aboutData);
-  const [currentItemId, setCurrentItemId] = useState(aboutData[0]?.id || null);
+  const [currentItemId, setCurrentItemId] = useState<string | null>(
+    aboutData[0]?.id || null
+  );
   console.log(currentItemId);
 
   return (
