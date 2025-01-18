@@ -46,9 +46,11 @@ const HeroInfo = ({ className }) => {
         </ul>
       </aside> */}
       {/* Main Editor */}
-      <div className="flex-1 p-4 sm:p-6">
+      <div className="flex-1 p-4 sm:p-6 text-neutral-200">
         <div className="mb-6 border-b border-gray-600 pb-4">
-          <h2 className="text-lg font-bold">profile_info.js</h2>
+          <h2 className="text-lg font-bold text-neutral-200">
+            profile_info.js
+          </h2>
         </div>
         <div className="font-mono text-sm leading-relaxed">
           <p>
