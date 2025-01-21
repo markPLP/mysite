@@ -1,7 +1,14 @@
 import React from 'react';
 
-const Container = ({ children }: { children: React.ReactNode }) => {
-  return <section className="align-element">{children}</section>;
+const Container = ({
+  children,
+  className,
+  id,
+}: {
+  children: React.ReactNode;
+  className: string;
+}) => {
+  return <section className={`align-element ${className}`}>{children}</section>;
 };
 
 export default Container;
