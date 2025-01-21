@@ -1,11 +1,15 @@
 import { Button } from '../ui/button';
-import heroImg from '../../assets/hero-img.svg';
+import heroImg from '../../assets/profile-anbu.png';
 
 const HeroIntro = ({ className }: { className: string }) => {
   return (
     <article className={className}>
-      <figure className="w-[200px] h-[200px] m-auto rounded-[300px] overflow-hidden shadow-lg">
-        <img src={heroImg} alt="hero image" />
+      <figure className="w-[350px] h-[350px] rounded-[400px] overflow-hidden shadow-lg flex items-center mb-8">
+        <img
+          src={heroImg}
+          alt="hero image"
+          className="object-cover w-full h-full"
+        />
       </figure>
       <h1 className="text-4xl sm:text-[54px] font-bold mb-3 leading-tight">
         Hi, i'm <span className="text-primary">Mark Phillip</span>
