@@ -11,12 +11,12 @@ const About = () => {
   );
 
   return (
-    <section id="about">
+    <section id="about" className="scroll-mt-16 lg:h-screen h-md:h-auto">
       <SectionTitle text="About" />
-      <Container className="h-screen scroll-mt-16 place-items-center flex">
+      <Container className="flex">
         <article className="grid grid-cols-[1fr,2fr] gap-12">
           <div>
-            <p className="text-right mb-3 text-3xl">I am</p>
+            <p className="text-right mb-3 text-xl uppercase">I am</p>
             <h2 className="text-3xl font-bold text-right text-primary mb-6 pb-4">
               A Frontend Developer
             </h2>

@@ -9,15 +9,13 @@ const NavbarMobile = () => {
       case 0:
         return 'translateX(calc(50px * 0))';
       case 1:
-        return 'translateX(calc(50px * 1 + (4px * 2)))';
+        return 'translateX(calc(50px * 1 + (11px * 2)))';
       case 2:
-        return 'translateX(calc(50px * 2 + (6px * 2) + 2px))';
+        return 'translateX(calc(50px * 2 + (20px * 2) + 2px))';
       case 3:
-        return 'translateX(calc(50px * 3 + (4px * 5) + 2px))';
+        return 'translateX(calc(50px * 3 + (30px * 2) + 2px))';
       case 4:
-        return 'translateX(calc(50px * 4 + (5px * 5) + 2px))';
-      case 5:
-        return 'translateX(calc(50px * 5 + (5px * 7) + 1px))';
+        return 'translateX(calc(50px * 4 + (42px * 2) + 2px))';
       default:
         return 'translateX(0)';
     }
@@ -25,7 +23,7 @@ const NavbarMobile = () => {
 
   return (
     <div
-      className="md:hidden fixed bottom-0 flex justify-center items-center w-full bg-primary"
+      className="md:hidden fixed bottom-0 flex justify-center items-center w-full bg-primary z-20"
       style={{ boxShadow: '0 -8px 0 0 #0c0a09' }}
     >
       <div className="relative flex items-center px-5 w-[375px]">
