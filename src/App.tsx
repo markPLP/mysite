@@ -5,6 +5,7 @@ import { ThemeProvider } from './components/theme-provider';
 import { SidebarProvider } from './context/SidebarContext';
 import NavbarMobile from './components/navbar/NavbarMobile';
 import About from './components/about/About';
+import Timeline from './components/experience/Timeline';
 
 const App = () => {
   return (
@@ -16,6 +17,8 @@ const App = () => {
       <main>
         <HeroBanner />
         <About />
+        <Timeline />
+        {/* <Skills /> */}
       </main>
       <NavbarMobile />
     </ThemeProvider>

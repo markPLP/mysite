@@ -4,6 +4,13 @@ module.exports = {
   content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
   theme: {
     extend: {
+      screens: {
+        // Add custom height-based breakpoints
+        'h-sm': { raw: '(max-height: 640px)' }, // small height
+        'h-md': { raw: '(min-height: 300px) and (max-height: 768px)' }, // medium height
+        // 'h-md': { raw: '(min-height: 641px) and (max-height: 768px)' }, // medium height
+        // 'h-lg': { raw: '(min-height: 769px)' }, // large height
+      },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #ec4899, #8b5cf6)', // Matches the Tailwind classes
         'custom-gradient-hover': 'linear-gradient(to right, #ff758c, #ff3c61)', // Matches the Tailwind classes
