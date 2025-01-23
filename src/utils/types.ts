@@ -36,7 +36,8 @@ export type Asset = {
 export type ProjectItem = {
   id: string;
   ghUrl: string;
-  largeImage: string; // Simplified to just the URL
+  // largeImage: string; // Simplified to just the URL
+  largeImage: string;
   liveUrl: string;
   logoImage: string; // Simplified to just the URL
   tags: string[];
@@ -52,3 +53,8 @@ export type UseFetchProjectsReturn = {
   error: unknown;
   data?: ProjectsQueryResponse;
 };
+
+// export type LargeImage = {
+//   id: string;
+//   imageUrl: string
+// }

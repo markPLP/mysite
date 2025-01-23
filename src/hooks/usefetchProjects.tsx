@@ -8,11 +8,9 @@ import { createClient } from 'contentful';
 import { useQuery } from 'react-query';
 
 const client = createClient({
-  // space: process.env.REACT_APP_CONTENTFUL_SPACE_ID,
-  // accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
   space: 'us6r6oy788vz',
   environment: 'master',
-  accessToken: 'G9sJ5VVSECR9IhYlm_gJH7kIPumaog-qoxAbXmYjAKc',
+  accessToken: import.meta.env.VITE_API_KEY,
 });
 
 export const useFetchProjects = (): UseFetchProjectsReturn => {
@@ -20,6 +18,7 @@ export const useFetchProjects = (): UseFetchProjectsReturn => {
     queryKey: ['projects'],
     queryFn: async () => {
       const response = await client.getEntries({ content_type: 'projects' });
+      console.log(response);
 
       const projectItems: ProjectItem[] = response.items.map((item) => {
         const { ghUrl, image, liveUrl, logo, tags, title } = item.fields as {
@@ -34,7 +33,21 @@ export const useFetchProjects = (): UseFetchProjectsReturn => {
         const { id } = item.sys;
 
         // Safely extract URLs, defaulting to empty strings if undefined
-        const largeImage = image?.fields?.file?.url || '';
+        const largeImage = image?.fields?.file?.url
+          ? image.fields.file.url.startsWith('http')
+            ? image.fields.file.url
+            : `https:${image.fields.file.url}`
+          : '';
+
+        // const largeImage: LargeImage = {
+        //   id,
+        //   imageUrl: image?.fields?.file?.url
+        //     ? image.fields.file.url.startsWith('http')
+        //       ? image.fields.file.url
+        //       : `https:${image.fields.file.url}`
+        //     : '',
+        // };
+
         const logoImage = logo?.fields?.file?.url || '';
 
         return {
