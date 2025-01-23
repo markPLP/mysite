@@ -20,7 +20,7 @@ export default function Timeline({ defaultColor }: { defaultColor?: string }) {
   return (
     <section
       id="experience"
-      className="scroll-mt-16 lg:h-screen mb-12 mx-auto xl:place-items-center md:max-w-[600px] lg:max-w-[80%] h-md:h-auto"
+      className="scroll-mt-16 mb-12 mx-auto xl:place-items-center md:max-w-[600px] lg:max-w-[80%]"
     >
       <SectionTitle text="Experience" />
       <Container className="flex flex-col gap-y-[100px]">

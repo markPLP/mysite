@@ -22,3 +22,33 @@ export type AboutItem = {
   title: string;
   description: DescriptionItem[];
 };
+
+export type AssetFields = {
+  file: {
+    url: string;
+  };
+};
+
+export type Asset = {
+  fields: AssetFields;
+};
+
+export type ProjectItem = {
+  id: string;
+  ghUrl: string;
+  largeImage: string; // Simplified to just the URL
+  liveUrl: string;
+  logoImage: string; // Simplified to just the URL
+  tags: string[];
+  title: string;
+};
+
+export type ProjectsQueryResponse = {
+  data: ProjectItem[];
+};
+
+export type UseFetchProjectsReturn = {
+  isLoading: boolean;
+  error: unknown;
+  data?: ProjectsQueryResponse;
+};
