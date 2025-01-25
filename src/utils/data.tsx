@@ -9,7 +9,6 @@ import {
   faHouse,
   faUser,
   faTrophy,
-  faUserNinja,
   faFolderOpen,
   faAddressBook,
 } from '@fortawesome/free-solid-svg-icons';

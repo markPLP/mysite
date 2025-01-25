@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '../ui/card';
@@ -25,7 +24,7 @@ export default function Timeline({ defaultColor }: { defaultColor?: string }) {
       <SectionTitle text="Experience" />
       <Container className="flex flex-col gap-y-[100px]">
         {timelineElements.map((element, index) => {
-          const { id, title, company, description, date, icon, tech } = element;
+          const { id, title, company, description, date } = element;
           // const colors = [
           //   'bg-red-500',
           //   'bg-blue-500',
