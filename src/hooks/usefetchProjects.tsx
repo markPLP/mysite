@@ -22,16 +22,17 @@ export const useFetchProjects = (filter: string): UseQueryReturn => {
 
       const response = await contentfulClient.getEntries(queryParams);
 
-      console.log('response from useFetchProjects', response);
-
       const projectItems: ProjectItem[] = response.items.map((item) => {
-        const { ghUrl, image, liveUrl, logo, title } = item.fields as {
-          ghUrl?: string;
-          image?: Asset;
-          liveUrl?: string;
-          logo?: Asset;
-          title?: string;
-        };
+        const { ghUrl, image, liveUrl, logo, title, description, tech } =
+          item.fields as {
+            ghUrl?: string;
+            image?: Asset;
+            liveUrl?: string;
+            logo?: Asset;
+            title?: string;
+            description?: string;
+            tech?: string[];
+          };
 
         const tags = item.metadata.tags.map((tagItem) => {
           const { id } = tagItem.sys;
@@ -47,7 +48,6 @@ export const useFetchProjects = (filter: string): UseQueryReturn => {
           : '';
 
         const logoImage = logo?.fields?.file?.url || '';
-        console.log(tags, 'tagstags');
 
         return {
           id,
@@ -57,6 +57,8 @@ export const useFetchProjects = (filter: string): UseQueryReturn => {
           logoImage,
           title: title || '', // Default to empty string if undefined
           tags: tags || [], // Default to empty array if undefined
+          description,
+          tech,
         };
       });
 

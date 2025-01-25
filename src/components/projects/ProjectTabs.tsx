@@ -1,5 +1,6 @@
 import { useFetchProjects } from '@/hooks/usefetchProjects';
-import { memo, useMemo } from 'react';
+import { memo, useMemo, useState } from 'react';
+import { Button } from '../ui/button';
 
 const ProjectTabs = ({
   handleGetTag,
@@ -7,27 +8,36 @@ const ProjectTabs = ({
   handleGetTag: (tag: string) => void;
 }) => {
   const { data } = useFetchProjects('all');
+  const [activeTag, setActiveTag] = useState<string>('all');
 
+  const handleClick = (tag: string) => {
+    handleGetTag(tag);
+    setActiveTag(tag);
+  };
   // filter tags
   const tags = useMemo(
-    () =>
-      Array.from(
-        new Set(
-          data?.data.flatMap((item) =>
-            item.tags.map((tag) => tag.toLowerCase())
-          )
-        )
+    () => [
+      'all',
+      ...new Set(
+        data?.data.flatMap((item) => item.tags.map((tag) => tag.toLowerCase()))
       ),
+    ],
     [data]
   );
 
   return (
-    <section className="w-1/2 ml-auto relative z-10">
+    <section className="w-1/2 ml-auto relative z-10 flex justify-end space-x-2 mb-4">
       {tags &&
         tags.map((tag, index) => {
           return (
             <div key={index}>
-              <button onClick={() => handleGetTag(tag)}>{tag}</button>
+              <Button
+                className={tag === activeTag ? 'active' : ''}
+                variant={tag === activeTag ? 'outline' : 'default'}
+                onClick={() => handleClick(tag)}
+              >
+                {tag}
+              </Button>
             </div>
           );
         })}

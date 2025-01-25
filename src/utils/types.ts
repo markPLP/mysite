@@ -42,6 +42,8 @@ export type ProjectItem = {
   logoImage: string; // Simplified to just the URL
   title: string;
   tags: string[];
+  tech?: string[];
+  description: string;
 };
 
 export type ProjectsQueryResponse = {
