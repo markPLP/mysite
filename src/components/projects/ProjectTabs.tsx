@@ -1,27 +1,28 @@
-import { AllTags, ProjectsQueryResponse } from '@/utils/types';
+import { useFetchProjects } from '@/hooks/usefetchProjects';
+import { memo, useMemo } from 'react';
 
 const ProjectTabs = ({
-  tags,
   handleGetTag,
 }: {
-  tags: string[] | undefined;
   handleGetTag: (tag: string) => void;
 }) => {
-  // const tags: string[] | undefined = [
-  //   ...new Set(data?.data.flatMap((item) => item.tags)),
-  // ];
+  const { data } = useFetchProjects('all');
 
-  // const tags: AllTags | undefined = [
-  //   ...new Set(
-  //     data?.data.flatMap((item) =>
-  //       item.metadata?.tags.map((tag) => tag.toLowerCase())
-  //     )
-  //   ),
-  // ];
+  // filter tags
+  const tags = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          data?.data.flatMap((item) =>
+            item.tags.map((tag) => tag.toLowerCase())
+          )
+        )
+      ),
+    [data]
+  );
 
-  console.log(tags, 'data des');
   return (
-    <section className="w-1/2 ml-auto">
+    <section className="w-1/2 ml-auto relative z-10">
       {tags &&
         tags.map((tag, index) => {
           return (
@@ -34,4 +35,4 @@ const ProjectTabs = ({
   );
 };
 
-export default ProjectTabs;
+export default memo(ProjectTabs);

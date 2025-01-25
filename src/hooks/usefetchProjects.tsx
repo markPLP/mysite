@@ -1,24 +1,28 @@
+import { contentfulClient } from '@/api/contentful';
 import {
   Asset,
   ProjectItem,
   ProjectsQueryResponse,
   UseQueryReturn,
 } from '@/utils/types';
-import { createClient } from 'contentful';
-import { useQuery } from 'react-query';
 
-const client = createClient({
-  space: 'us6r6oy788vz',
-  environment: 'master',
-  accessToken: import.meta.env.VITE_API_KEY,
-});
+import { useQuery } from 'react-query';
 
 export const useFetchProjects = (filter: string): UseQueryReturn => {
   const { isLoading, error, data } = useQuery<ProjectsQueryResponse>({
     queryKey: ['projects', filter],
     queryFn: async () => {
-      const response = await client.getEntries({ content_type: 'projects' });
-      console.log(response);
+      let queryParams: any = { content_type: 'projects' };
+
+      if (filter === 'all') {
+        queryParams = queryParams;
+      } else if (filter) {
+        queryParams['metadata.tags.sys.id[in]'] = filter;
+      }
+
+      const response = await contentfulClient.getEntries(queryParams);
+
+      console.log('response from useFetchProjects', response);
 
       const projectItems: ProjectItem[] = response.items.map((item) => {
         const { ghUrl, image, liveUrl, logo, title } = item.fields as {
@@ -58,6 +62,9 @@ export const useFetchProjects = (filter: string): UseQueryReturn => {
 
       return { data: projectItems };
     },
+    staleTime: 60000, // Cache data for 1 minute
+    refetchOnWindowFocus: false, // Prevent refetching when the window regains focus
+    enabled: !!filter, // Fetch only when filter is not null/undefined
   });
 
   return { isLoading, error, data };

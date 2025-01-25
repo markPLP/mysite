@@ -2,7 +2,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { ProjectsQueryResponse } from '@/utils/types';
-import { memo } from 'react';
+import { memo, useMemo } from 'react';
 
 const ProjectCarousel = ({
   data,
@@ -11,7 +11,7 @@ const ProjectCarousel = ({
   data: ProjectsQueryResponse | undefined;
   handleClickId: (largeImage: string) => void;
 }) => {
-  var settings = {
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -19,37 +19,30 @@ const ProjectCarousel = ({
     slidesToScroll: 1,
   };
 
+  const projects = useMemo(
+    () =>
+      data?.data.map((project) => (
+        <div key={project.id} className="relative">
+          <img
+            src={project.logoImage}
+            alt={`${project.title} Preview`}
+            className="w-full h-auto"
+          />
+          <span
+            onClick={() => handleClickId(project.largeImage)}
+            className="absolute top-0 left-0 w-full h-full z-10 text-xl cursor-pointer"
+          >
+            {project.id}
+          </span>
+        </div>
+      )),
+    [data, handleClickId]
+  );
+
   return (
     <section className="w-1/2 ml-auto">
       {/* <Container> */}
-      <Slider {...settings}>
-        {data?.data.map((project) => {
-          return (
-            <div key={project.id} className="relative">
-              <div
-                // style={{ background: `url(${project.largeImage})` }}
-                className="relative"
-              >
-                {/* <h2>{project.title}</h2>
-                <p>
-                  Live URL: <a href={project.liveUrl}>{project.liveUrl}</a>
-                </p>
-                <p>
-                  GitHub: <a href={project.ghUrl}>{project.ghUrl}</a>
-                </p> */}
-                {/* <p>Tags: {project.tags.join(', ')}</p> */}
-                <img src={project.logoImage} alt={`${project.title} Preview`} />
-                <span
-                  onClick={() => handleClickId(project.largeImage)}
-                  className="absolute top-0 left-0 w-full h-full z-10 text-1xl"
-                >
-                  {project.id}
-                </span>
-              </div>
-            </div>
-          );
-        })}
-      </Slider>
+      <Slider {...settings}>{projects}</Slider>
     </section>
   );
 };
