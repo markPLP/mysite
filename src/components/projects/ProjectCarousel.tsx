@@ -1,7 +1,8 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
-import { AssetFields, ProjectItem, ProjectsQueryResponse } from '@/utils/types';
+import { ProjectsQueryResponse } from '@/utils/types';
+import { memo } from 'react';
 
 const ProjectCarousel = ({
   data,
@@ -53,4 +54,4 @@ const ProjectCarousel = ({
   );
 };
 
-export default ProjectCarousel;
+export default memo(ProjectCarousel);

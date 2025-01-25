@@ -2,7 +2,7 @@ import {
   Asset,
   ProjectItem,
   ProjectsQueryResponse,
-  UseFetchProjectsReturn,
+  UseQueryReturn,
 } from '@/utils/types';
 import { createClient } from 'contentful';
 import { useQuery } from 'react-query';
@@ -13,42 +13,37 @@ const client = createClient({
   accessToken: import.meta.env.VITE_API_KEY,
 });
 
-export const useFetchProjects = (): UseFetchProjectsReturn => {
+export const useFetchProjects = (filter: string): UseQueryReturn => {
   const { isLoading, error, data } = useQuery<ProjectsQueryResponse>({
-    queryKey: ['projects'],
+    queryKey: ['projects', filter],
     queryFn: async () => {
       const response = await client.getEntries({ content_type: 'projects' });
       console.log(response);
 
       const projectItems: ProjectItem[] = response.items.map((item) => {
-        const { ghUrl, image, liveUrl, logo, tags, title } = item.fields as {
+        const { ghUrl, image, liveUrl, logo, title } = item.fields as {
           ghUrl?: string;
           image?: Asset;
           liveUrl?: string;
           logo?: Asset;
-          tags?: string[];
           title?: string;
         };
 
+        const tags = item.metadata.tags.map((tagItem) => {
+          const { id } = tagItem.sys;
+          return id;
+        });
+
         const { id } = item.sys;
 
-        // Safely extract URLs, defaulting to empty strings if undefined
         const largeImage = image?.fields?.file?.url
           ? image.fields.file.url.startsWith('http')
             ? image.fields.file.url
             : `https:${image.fields.file.url}`
           : '';
 
-        // const largeImage: LargeImage = {
-        //   id,
-        //   imageUrl: image?.fields?.file?.url
-        //     ? image.fields.file.url.startsWith('http')
-        //       ? image.fields.file.url
-        //       : `https:${image.fields.file.url}`
-        //     : '',
-        // };
-
         const logoImage = logo?.fields?.file?.url || '';
+        console.log(tags, 'tagstags');
 
         return {
           id,
@@ -56,8 +51,8 @@ export const useFetchProjects = (): UseFetchProjectsReturn => {
           largeImage,
           liveUrl: liveUrl || '', // Default to empty string if undefined
           logoImage,
-          tags: tags || [], // Default to an empty array if undefined
           title: title || '', // Default to empty string if undefined
+          tags: tags || [], // Default to empty array if undefined
         };
       });
 

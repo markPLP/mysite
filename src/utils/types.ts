@@ -40,21 +40,23 @@ export type ProjectItem = {
   largeImage: string;
   liveUrl: string;
   logoImage: string; // Simplified to just the URL
-  tags: string[];
   title: string;
+  tags: string[];
 };
 
 export type ProjectsQueryResponse = {
   data: ProjectItem[];
 };
 
-export type UseFetchProjectsReturn = {
+export type UseQueryReturn = {
   isLoading: boolean;
   error: unknown;
   data?: ProjectsQueryResponse;
 };
 
-// export type LargeImage = {
-//   id: string;
-//   imageUrl: string
-// }
+export type AllTags = {
+  // metadata?: {
+  //   tags: string[];
+  // };
+  sys: string;
+};
