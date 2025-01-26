@@ -57,7 +57,7 @@ export const useFetchProjects = (filter: string): UseQueryReturn => {
           logoImage,
           title: title || '', // Default to empty string if undefined
           tags: tags || [], // Default to empty array if undefined
-          description,
+          description: description || '', // Default to empty string if undefined
           tech,
         };
       });
