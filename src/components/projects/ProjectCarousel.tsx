@@ -15,20 +15,20 @@ const ProjectCarousel = ({
   const slidesCount =
     (data?.data?.length ?? 0) > 5 ? 5 : data?.data?.length ?? 0;
 
-  const getWidth = useMemo(() => {
-    switch (slidesCount) {
-      case 4:
-        return '740px';
-      case 3:
-        return '560px';
-      case 2:
-        return '350px';
-      case 1:
-        return '200px';
-      default:
-        return '900px'; // Default width
-    }
-  }, [data]);
+  // const getWidth = useMemo(() => {
+  //   switch (slidesCount) {
+  //     case 4:
+  //       return '740px';
+  //     case 3:
+  //       return '560px';
+  //     case 2:
+  //       return '350px';
+  //     case 1:
+  //       return '200px';
+  //     default:
+  //       return '900px'; // Default width
+  //   }
+  // }, [data]);
 
   const settings = {
     dots: true,
@@ -36,23 +36,51 @@ const ProjectCarousel = ({
     speed: 500,
     slidesToShow: slidesCount,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     arrow: true,
     lazyLoad: 'progressive' as const,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 330,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const handleClickCarousel = (project: ProjectItem) => {
-    // handleClick(project.largeImage);
     handleClick(project);
-    console.log('project from handleClickCarousel', project);
   };
 
   const projects = useMemo(
     () =>
       data?.data.map((project) => {
-        // const { id, title, logoImage, largeImage } = project;
-        console.log('project from carousel', project);
-
         return (
           <div
             key={project.id}
@@ -61,7 +89,7 @@ const ProjectCarousel = ({
             <img
               src={project.logoImage}
               alt={`${project.title} Preview`}
-              className="object-contain p-2 w-40 h-14 border-2 border-white"
+              className="object-contain p-2 w-full h-full object-position-right"
             />
             <span
               onClick={() => handleClickCarousel(project)}
@@ -74,8 +102,11 @@ const ProjectCarousel = ({
   );
 
   return (
-    <section className="ml-auto overflow-hidden " style={{ width: getWidth }}>
-      {/* <Container>  min-w-[300px] max-w-[1000px] */}
+    <section
+      className="ml-auto overflow-hidden w-full max-w-[calc(100vw-30px)]"
+      // style={{ maxWidth: getWidth }}
+    >
+      {/* <Container>  min-w-[300px] max-w-[1000px]  */}
       <Slider className="pt-6" {...settings}>
         {projects}
       </Slider>

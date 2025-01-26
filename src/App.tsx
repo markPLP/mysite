@@ -19,22 +19,12 @@ const App = () => {
         <Navbar />
       </SidebarProvider>
       <main>
-        <Suspense fallback={<div>Loading Hero Banner...</div>}>
-          <HeroBanner />
-        </Suspense>
-        <Suspense fallback={<div>Loading About Section...</div>}>
-          <About />
-        </Suspense>
-        <Suspense fallback={<div>Loading Timeline...</div>}>
-          <Timeline />
-        </Suspense>
-        <Suspense fallback={<div>Loading Projects...</div>}>
-          <Projects />
-        </Suspense>
+        <HeroBanner />
+        <About />
+        <Timeline />
+        <Projects />
       </main>
-      <Suspense fallback={<div>Loading Mobile Navbar...</div>}>
-        <NavbarMobile />
-      </Suspense>
+      <NavbarMobile />
     </ThemeProvider>
   );
 };

@@ -14,10 +14,10 @@ const About = () => {
     <section id="about" className="scroll-mt-16 lg:h-screen h-md:h-auto">
       <SectionTitle text="About" />
       <Container className="flex">
-        <article className="grid grid-cols-[1fr,2fr] gap-12">
+        <article className="grid md:grid-cols-[1fr,2fr] gap-12">
           <div>
-            <p className="text-right mb-3 text-xl uppercase">I am</p>
-            <h2 className="text-3xl font-bold text-right text-primary mb-6 pb-4">
+            <p className="mb-3 text-xl uppercase md:text-right">I am</p>
+            <h2 className="text-3xl font-bold text-primary pb-4 md:text-right md:mb-6">
               A Frontend Developer
             </h2>
             <AboutButton data={aboutData} setCurrentItem={setCurrentItemId} />

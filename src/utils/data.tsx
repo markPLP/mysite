@@ -60,17 +60,6 @@ export const links = [
       <FontAwesomeIcon icon={faTrophy} className="w-full h-full object-cover" />
     ),
   },
-  // {
-  //   id: nanoid(),
-  //   href: '#skills',
-  //   text: 'skills',
-  //   icon: (
-  //     <FontAwesomeIcon
-  //       icon={faUserNinja}
-  //       className="w-full h-full object-cover"
-  //     />
-  //   ),
-  // },
   {
     id: nanoid(),
     href: '#projects',
@@ -137,7 +126,6 @@ export const aboutData: AboutItem[] = [
           'TypeScript: Error prevention and code readability.',
           'Shadcn/ui: Customizable, responsive components.',
           'Tailwind CSS: Stylish designs without custom CSS.',
-          'GraphQL: Efficient data retrieval.',
         ],
       },
       {

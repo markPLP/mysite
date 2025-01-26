@@ -5,7 +5,7 @@ type AboutButtonProps = {
 
 const AboutButton = ({ data, setCurrentItem }: AboutButtonProps) => {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex gap-4 flex-wrap md:flex-col ">
       {data?.map((item) => {
         const { id, label } = item;
 

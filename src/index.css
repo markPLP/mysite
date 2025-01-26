@@ -104,3 +104,7 @@
 .slick-list {
   height: 70px;
 }
+
+div.slick-track {
+  margin-right: 0;
+}

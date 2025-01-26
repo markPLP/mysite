@@ -4,7 +4,7 @@ import heroImg from '../../assets/profile-anbu.png';
 const HeroIntro = ({ className }: { className: string }) => {
   return (
     <article className={className}>
-      <figure className="w-[350px] h-[350px] rounded-[400px] overflow-hidden shadow-lg flex items-center mb-8">
+      <figure className="max-w-[350px] h-[350px] rounded-[400px] overflow-hidden shadow-lg flex items-center mb-8">
         <img
           src={heroImg}
           alt="hero image"
@@ -20,7 +20,7 @@ const HeroIntro = ({ className }: { className: string }) => {
         <span className="text-blue-400">my_GOAL</span> = 2 *
         (your_SATISFACTION);
       </p>
-      <div className="mt-8 flex gap-4">
+      <div className="mt-8 flex gap-4 flex-wrap">
         <Button size="lg">Get in touch</Button>
         <Button size="lg" variant="outline">
           Download CV

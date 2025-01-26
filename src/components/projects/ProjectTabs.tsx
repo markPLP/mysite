@@ -26,7 +26,7 @@ const ProjectTabs = ({
   );
 
   return (
-    <section className="w-1/2 ml-auto relative z-10 flex justify-end space-x-2 mb-4">
+    <section className="ml-auto relative z-10 flex justify-end gap-2 mb-4 flex-wrap">
       {tags &&
         tags.map((tag, index) => {
           return (
