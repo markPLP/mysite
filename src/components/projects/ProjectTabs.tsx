@@ -26,13 +26,13 @@ const ProjectTabs = ({
   );
 
   return (
-    <section className="ml-auto relative z-10 flex justify-end gap-2 mb-4 flex-wrap">
+    <section className="m-auto relative z-10 flex justify-center gap-2 mb-6 flex-wrap">
       {tags &&
         tags.map((tag, index) => {
           return (
             <div key={index}>
               <Button
-                size="sm"
+                // size="sm"
                 className={tag === activeTag ? 'active' : ''}
                 variant={tag === activeTag ? 'outline' : 'default'}
                 onClick={() => handleClick(tag)}

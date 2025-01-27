@@ -7,7 +7,6 @@ import SectionTitle from '../global/SectionTitle';
 const About = () => {
   //const [data, setData] = useState(aboutData);
   const [currentItemId, setCurrentItemId] = useState<string>(aboutData[0].id);
-  console.log('currentItemId', currentItemId);
 
   return (
     <section id="about" className="scroll-mt-16 lg:h-screen h-md:h-auto">

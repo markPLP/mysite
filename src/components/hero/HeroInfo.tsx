@@ -21,11 +21,11 @@ const profile_info = {
     'Netlify',
     'Git',
   ],
-  hard_worker: true,
+  efficient: true,
   quick_learner: true,
   problem_solver: true,
   hireable: function () {
-    return this.hard_worker && this.problem_solver && this.skills.length >= 5;
+    return this.efficient && this.problem_solver && this.skills.length >= 5;
   },
 };
 
@@ -72,9 +72,9 @@ const HeroInfo = ({ className }: { className: string }) => {
               ],
             </p>
             <p>
-              <span className="text-blue-400">hard_worker</span>:{' '}
+              <span className="text-blue-400">efficient</span>:{' '}
               <span className="text-purple-400">
-                {profile_info.hard_worker.toString()}
+                {profile_info.efficient.toString()}
               </span>
               ,
             </p>
@@ -103,7 +103,7 @@ const HeroInfo = ({ className }: { className: string }) => {
               <div className="ml-6">
                 <p>
                   <span className="text-pink-400 block">
-                    this.hard_worker
+                    this.efficient
                     <span className="text-neutral-200"> &&</span>
                   </span>
                   <span className="text-pink-400 block">

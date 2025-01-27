@@ -10,8 +10,6 @@ const ProjectInfo = ({
   className?: string;
   data: ProjectItem;
 }) => {
-  console.log('projectinfotech', data);
-
   return (
     <div className={`grid grid-cols-1 ${className}`}>
       <div className="flex-1 p-4 sm:p-6 text-neutral-200">

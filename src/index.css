@@ -90,24 +90,19 @@
 }
 
 .slick-arrow.slick-next {
-  right: 10px;
+  right: 5px;
   z-index: 30;
-  top: 10px;
 }
 
 .slick-arrow.slick-prev {
-  left: auto;
-  top: 10px;
   z-index: 30;
-  right: 40px;
+  left: -10px;
 }
 
 .slick-list {
   height: 70px;
-}
-
-div.slick-track {
-  margin-right: 0;
+  max-width: calc(100% - 40px);
+  margin: auto;
 }
 
 .dark .contact-form label {

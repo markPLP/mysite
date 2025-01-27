@@ -27,7 +27,7 @@ const App = () => {
         <HeroBanner />
         <About />
         <Timeline />
-        {/* <Projects /> */}
+        <Projects />
         <Contact />
       </main>
       <NavbarMobile />

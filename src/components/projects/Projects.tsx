@@ -11,7 +11,6 @@ const Projects = () => {
   const { isLoading, error, data } = useFetchProjects(filter || 'all');
   const [prodBg, setProdBg] = useState<string>('');
   const [websiteInfo, setWebsiteInfo] = useState<any>(null);
-  console.log('data from projects', websiteInfo);
 
   useEffect(() => {
     if (data && data.data.length > 0) {
@@ -38,26 +37,34 @@ const Projects = () => {
   if (isLoading)
     return <div className="h-screen bg-black">Loading projects...</div>;
   if (error) return <div>Failed to load projects.</div>;
-  console.log('websiteInfowebsiteInfo', websiteInfo);
 
   return (
-    <section id="projects" className="lg:h-screen py-8 relative md:py-28 grid">
-      <div
+    <section id="projects" className="py-8 relative md:py-28 grid">
+      {/* <div
         className="!bg-cover absolute inset-0 brightness-50"
         style={{ background: `url(${prodBg})` }}
-      ></div>
+      ></div> */}
       <SectionTitle className="relative z-10" text="Projects" />
       <div className="align-element flex flex-col m-auto pb-0 lg:max-w-[88%] lg:gap-y-[50px]">
-        <div className="lg:grid lg:grid-cols-2 gap-8">
-          <div className="relative z-10 mb-7 lg:mb-0">
-            <ProjectInfo
-              data={websiteInfo}
-              className="from-[#0d122495] bg-gradient-to-r to-[#0a0d3795] border-[#1b2c68a0] relative rounded-lg border"
-            />
-          </div>
-          <div className="flex flex-col self-end from-[#0d122495] bg-gradient-to-r to-[#0a0d3795] border-[#1b2c68a0] relative rounded-lg border p-7">
+        <div className="">
+          {/* lg:grid lg:grid-cols-2 gap-8 */}
+          <div className="flex flex-col mb-7 self-end from-[#0d122498] bg-gradient-to-r to-[#0a0d3798] border-[#1b2c68a0] relative rounded-lg border px-7 py-10">
             <ProjectTabs handleGetTag={handleGetTag} />
             <ProjectCarousel data={data} handleClick={handleClick} />
+          </div>
+          <div className="lg:grid lg:grid-cols-2 gap-8">
+            <div>
+              <figure>
+                <img
+                  src={prodBg}
+                  alt="Project Preview"
+                  className="object-cover w-full h-full rounded-lg"
+                />
+              </figure>
+            </div>
+            <div className="from-[#0d122498] bg-gradient-to-r to-[#0a0d3798] border-[#1b2c68a0] rounded-lg border relative z-10 lg:mb-0">
+              <ProjectInfo data={websiteInfo} className="" />
+            </div>
           </div>
         </div>
       </div>
