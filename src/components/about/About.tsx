@@ -6,9 +6,8 @@ import Container from '../global/Container';
 import SectionTitle from '../global/SectionTitle';
 const About = () => {
   //const [data, setData] = useState(aboutData);
-  const [currentItemId, setCurrentItemId] = useState<string | null>(
-    aboutData[0]?.id || null
-  );
+  const [currentItemId, setCurrentItemId] = useState<string>(aboutData[0].id);
+  console.log('currentItemId', currentItemId);
 
   return (
     <section id="about" className="scroll-mt-16 lg:h-screen h-md:h-auto">
@@ -20,7 +19,11 @@ const About = () => {
             <h2 className="text-3xl font-bold text-primary pb-4 md:text-right md:mb-6">
               A Frontend Developer
             </h2>
-            <AboutButton data={aboutData} setCurrentItem={setCurrentItemId} />
+            <AboutButton
+              data={aboutData}
+              setCurrentItem={setCurrentItemId}
+              currentItemId={currentItemId}
+            />
           </div>
           <div>
             <AboutInfo currentItemId={currentItemId} data={aboutData} />

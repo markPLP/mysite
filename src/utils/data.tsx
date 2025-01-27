@@ -86,59 +86,6 @@ export const links = [
 
 export const aboutData: AboutItem[] = [
   {
-    id: 'about-me',
-    label: 'about me',
-    title: 'Welcome to my corner of the web! 🚀',
-    description: [
-      {
-        type: 'text',
-        content:
-          'I am a passionate web developer with a strong foundation in front-end development. I specialize in crafting responsive, user-friendly websites and applications that deliver seamless user experiences. My goal now is to learn new technologies and expand my skill set to stay ahead of the curve in the ever-evolving tech industry.',
-      },
-    ],
-  },
-  {
-    id: 'whats-going-on',
-    label: 'whats going on?',
-    title: 'Full-stack developer in the making',
-    description: [
-      {
-        type: 'text',
-        content:
-          'I am currently diving into the React framework and its rich ecosystem, exploring the art of building dynamic and interactive user interfaces. Alongside this, I’m immersing myself in the fascinating world of full-stack development, learning how to craft seamless applications from front to back.',
-      },
-    ],
-  },
-  {
-    id: 'site-info',
-    label: 'site info',
-    title: 'Tech stack',
-    description: [
-      {
-        type: 'text',
-        content:
-          "This portfolio showcases my web development expertise and commitment to creating high-quality websites. Feel free to reach out if you're interested in having one built as well. Here’s the tech stack I used for this project:",
-      },
-      {
-        type: 'list',
-        content: [
-          'React: Efficient component-based architecture.',
-          'TypeScript: Error prevention and code readability.',
-          'Shadcn/ui: Customizable, responsive components.',
-          'Tailwind CSS: Stylish designs without custom CSS.',
-        ],
-      },
-      {
-        type: 'text',
-        content: "I've also prioritized:",
-      },
-      {
-        type: 'list',
-        content: ['Accessibility.', 'Clean, modern UI.', 'Seamless UX.'],
-      },
-    ],
-  },
-  {
     id: 'skills',
     label: 'skills',
     title: 'Skills Stack',
@@ -189,49 +136,60 @@ export const aboutData: AboutItem[] = [
       },
     ],
   },
+  {
+    id: 'about-me',
+    label: 'about me',
+    title: 'Welcome to my corner of the web! 🚀',
+    description: [
+      {
+        type: 'text',
+        content:
+          'I am a passionate web developer with a strong foundation in front-end development. I specialize in crafting responsive, user-friendly websites and applications that deliver seamless user experiences. My goal now is to learn new technologies and expand my skill set to stay ahead of the curve in the ever-evolving tech industry.',
+      },
+    ],
+  },
+  {
+    id: 'whats-going-on',
+    label: "what's going on?",
+    title: 'Full-stack developer in the making',
+    description: [
+      {
+        type: 'text',
+        content:
+          'I am currently diving into the React framework and its rich ecosystem, exploring the art of building dynamic and interactive user interfaces. Alongside this, I’m immersing myself in the fascinating world of full-stack development, learning how to craft seamless applications from front to back.',
+      },
+    ],
+  },
+  {
+    id: 'site-info',
+    label: 'site info',
+    title: 'Tech stack',
+    description: [
+      {
+        type: 'text',
+        content:
+          "This portfolio showcases my web development expertise and commitment to creating high-quality websites. Feel free to reach out if you're interested in having one built as well. Here’s the tech stack I used for this project:",
+      },
+      {
+        type: 'list',
+        content: [
+          'React: Efficient component-based architecture.',
+          'TypeScript: Error prevention and code readability.',
+          'Shadcn/ui: Customizable, responsive components.',
+          'Tailwind CSS: Stylish designs without custom CSS.',
+        ],
+      },
+      {
+        type: 'text',
+        content: "I've also prioritized:",
+      },
+      {
+        type: 'list',
+        content: ['Accessibility.', 'Clean, modern UI.', 'Seamless UX.'],
+      },
+    ],
+  },
 ];
-
-// export const aboutData = [
-//   {
-//     id: nanoid(),
-//     label: 'about me',
-//     title: 'Welcome to my corner of the web! 🚀',
-//     description:
-//       'I am a passionate web developer with a strong foundation in front-end development. I specialize in crafting responsive, user-friendly websites and applications that deliver seamless user experiences. My goal now is to learn new technologies and expand my skill set to stay ahead of the curve in the ever-evolving tech industry.',
-//   },
-//   {
-//     id: nanoid(),
-//     label: 'whats going on?',
-//     title: 'Full-stack developer in the making',
-//     description:
-//       'I am currently diving into the React framework and its rich ecosystem, exploring the art of building dynamic and interactive user interfaces. Alongside this, I’m immersing myself in the fascinating world of full-stack development, learning how to craft seamless applications from front to back.',
-//   },
-//   {
-//     id: nanoid(),
-//     label: 'site info',
-//     title: 'Tech stack',
-//     description: [
-//       "This portfolio showcases my web development expertise and commitment to creating high-quality websites. Feel free to reach out if you're interested in having one built as well. Here’s the tech stack I used for this project:",
-//       {
-//         type: 'list',
-//         items: [
-//           'React: Efficient component-based architecture.',
-//           'TypeScript: Error prevention and code readability.',
-//           'Shadcn/ui: Customizable, responsive components.',
-//           'Tailwind CSS: Stylish designs without custom CSS.',
-//           'GraphQL: Efficient data retrieval.',
-//           'Contentful: Easy content management.',
-//           'Vite: Smooth dependency management.',
-//         ],
-//       },
-//       "I've also prioritized:",
-//       {
-//         type: 'list',
-//         items: ['Accessibility.', 'Clean, modern UI.', 'Seamless UX.'],
-//       },
-//     ],
-//   },
-// ];
 
 export const timelineElements = [
   {
@@ -293,44 +251,44 @@ export const timelineElements = [
   // - Exploring secure payment workflows and error handling.
 ];
 
-export const skillsData = [
-  {
-    id: nanoid(),
-    title: 'Frontend Development',
-    skills: [
-      { name: 'React', icon: icoReact },
-      { name: 'Next.js', icon: icoNext },
-      { name: 'Tailwind CSS', icon: icoTailwind },
-      { name: 'Framer Motion', icon: icoReact },
-      { name: 'TypeScript', icon: icoTypeScript },
-      { name: 'JavaScript', icon: icoJavaScript },
-      { name: 'HTML', icon: icoHTML5 },
-      { name: 'CSS', icon: icoCss },
-      { name: 'Rest API', icon: icoRestApi },
-    ],
-  },
-  {
-    id: nanoid(),
-    title: 'Backend Development',
-    skills: [
-      { name: 'Prisma', icon: icoPrisma },
-      { name: 'PostgresSQL', icon: icoPostgresSQL },
-      { name: 'GraphQL', icon: icoGraphQL },
-      { name: 'Supabase', icon: icoSupabase },
-    ],
-  },
-  {
-    id: nanoid(),
-    title: 'Tech tools',
-    skills: [
-      { name: 'VS Code', icon: icoVsCode },
-      { name: 'Vercel', icon: icoVercel },
-      { name: 'Vite', icon: icoVite },
-      { name: 'Clerk', icon: icoClerk },
-      { name: 'Figma', icon: icoFigma },
-      { name: 'Contentful', icon: icoContent },
-      { name: 'Git', icon: icoGit },
-      { name: 'GitHub', icon: icoGitHub },
-    ],
-  },
-];
+// export const skillsData = [
+//   {
+//     id: nanoid(),
+//     title: 'Frontend Development',
+//     skills: [
+//       { name: 'React', icon: icoReact },
+//       { name: 'Next.js', icon: icoNext },
+//       { name: 'Tailwind CSS', icon: icoTailwind },
+//       { name: 'Framer Motion', icon: icoReact },
+//       { name: 'TypeScript', icon: icoTypeScript },
+//       { name: 'JavaScript', icon: icoJavaScript },
+//       { name: 'HTML', icon: icoHTML5 },
+//       { name: 'CSS', icon: icoCss },
+//       { name: 'Rest API', icon: icoRestApi },
+//     ],
+//   },
+//   {
+//     id: nanoid(),
+//     title: 'Backend Development',
+//     skills: [
+//       { name: 'Prisma', icon: icoPrisma },
+//       { name: 'PostgresSQL', icon: icoPostgresSQL },
+//       { name: 'GraphQL', icon: icoGraphQL },
+//       { name: 'Supabase', icon: icoSupabase },
+//     ],
+//   },
+//   {
+//     id: nanoid(),
+//     title: 'Tech tools',
+//     skills: [
+//       { name: 'VS Code', icon: icoVsCode },
+//       { name: 'Vercel', icon: icoVercel },
+//       { name: 'Vite', icon: icoVite },
+//       { name: 'Clerk', icon: icoClerk },
+//       { name: 'Figma', icon: icoFigma },
+//       { name: 'Contentful', icon: icoContent },
+//       { name: 'Git', icon: icoGit },
+//       { name: 'GitHub', icon: icoGitHub },
+//     ],
+//   },
+// ];

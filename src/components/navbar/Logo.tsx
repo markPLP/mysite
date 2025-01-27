@@ -7,6 +7,14 @@ const Logo = ({ className }: { className?: string }) => {
       <span className="block font-heading font-bold text-[30px] leading-7">
         LP
       </span>
+      {/* <Link to="/">
+        <span className="block font-heading font-bold text-[30px] leading-7">
+          MP
+        </span>
+        <span className="block font-heading font-bold text-[30px] leading-7">
+          LP
+        </span>
+      </Link> */}
     </div>
   );
 };

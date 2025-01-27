@@ -41,17 +41,14 @@ const Projects = () => {
   console.log('websiteInfowebsiteInfo', websiteInfo);
 
   return (
-    <section
-      id="projects"
-      className="h-screen place-content-end relative py-28"
-    >
+    <section id="projects" className="lg:h-screen py-8 relative md:py-28 grid">
       <div
         className="!bg-cover absolute inset-0 brightness-50"
         style={{ background: `url(${prodBg})` }}
       ></div>
       <SectionTitle className="relative z-10" text="Projects" />
-      <div className="align-element flex flex-col m-auto lg:max-w-[88%] lg:gap-y-[50px]">
-        <div className="lg:grid lg:grid-cols-2 gap-8 align-bottom">
+      <div className="align-element flex flex-col m-auto pb-0 lg:max-w-[88%] lg:gap-y-[50px]">
+        <div className="lg:grid lg:grid-cols-2 gap-8">
           <div className="relative z-10 mb-7 lg:mb-0">
             <ProjectInfo
               data={websiteInfo}

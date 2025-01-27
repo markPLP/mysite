@@ -23,7 +23,7 @@ const NavbarMobile = () => {
 
   return (
     <div
-      className="md:hidden fixed bottom-0 flex justify-center items-center w-full bg-primary z-20"
+      className="fixed bottom-0 flex justify-center items-center w-full bg-primary z-20 transform duration-500 ease-in-out translate-y-0 md:-translate-y-[-200%]"
       style={{ boxShadow: '0 -8px 0 0 #0c0a09' }}
     >
       <div className="relative flex items-center px-5 w-[375px]">

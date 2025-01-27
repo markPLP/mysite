@@ -21,7 +21,9 @@ const HeroIntro = ({ className }: { className: string }) => {
         (your_SATISFACTION);
       </p>
       <div className="mt-8 flex gap-4 flex-wrap">
-        <Button size="lg">Get in touch</Button>
+        <Button asChild size="lg">
+          <a href="#contact">Get in touch</a>
+        </Button>
         <Button size="lg" variant="outline">
           Download CV
         </Button>

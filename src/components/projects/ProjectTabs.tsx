@@ -32,6 +32,7 @@ const ProjectTabs = ({
           return (
             <div key={index}>
               <Button
+                size="sm"
                 className={tag === activeTag ? 'active' : ''}
                 variant={tag === activeTag ? 'outline' : 'default'}
                 onClick={() => handleClick(tag)}
