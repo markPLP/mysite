@@ -4,8 +4,6 @@ import { memo, useEffect, useState, useCallback, useTransition } from 'react';
 import ProjectTabs from './ProjectTabs';
 import ProjectInfo from './ProjectInfo';
 import { ProjectItem } from '@/utils/types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import ProjectLoading from '../global/ProjectLoading';
 
 const Projects = () => {
@@ -22,18 +20,6 @@ const Projects = () => {
     }
   }, [data]);
 
-  // useEffect(() => {
-  //   if (data && data.data.length > 0) {
-  //     setWebsiteInfo(data.data[0]);
-  //   }
-  // }, [data]);
-
-  // useEffect(() => {
-  //   if (data && data.data.length > 0) {
-  //     setProdBg(data.data[0].largeImage);
-  //   }
-  // }, [data, setProdBg]);
-
   const handleClick = useCallback((project: ProjectItem) => {
     const newLargeImage = project.largeImage;
     setProdBg(newLargeImage);
@@ -46,16 +32,7 @@ const Projects = () => {
     });
   }, []);
 
-  if (isLoading || isPending)
-    return (
-      // <div className="h-screen absolute top-0 w-full grid place-content-center place-items-center bg-black bg-opacity-50">
-      //   <FontAwesomeIcon
-      //     icon={faSpinner}
-      //     className="text-[100px] animate-spin duration-[3000]"
-      //   />
-      // </div>
-      <ProjectLoading />
-    );
+  if (isLoading || isPending) return <ProjectLoading />;
   if (error) return <div>Failed to load projects.</div>;
 
   return (

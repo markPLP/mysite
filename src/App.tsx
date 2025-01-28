@@ -8,6 +8,7 @@ import Timeline from './components/experience/Timeline';
 import NavbarMobile from './components/navbar/NavbarMobile';
 import Contact from './components/contact/Contact';
 import ProjectWrapper from './components/projects/ProjectWrapper';
+import { Toaster } from './components/ui/toaster';
 
 // Lazy load components
 // const NavbarMobile = lazy(() => import('./components/navbar/NavbarMobile'));
@@ -31,6 +32,7 @@ const App = () => {
         <Contact />
       </main>
       <NavbarMobile />
+      <Toaster />
     </ThemeProvider>
   );
 };

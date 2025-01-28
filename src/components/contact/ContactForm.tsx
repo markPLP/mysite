@@ -3,8 +3,11 @@ import emailjs from '@emailjs/browser';
 import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import Socials from '../navbar/Socials';
+import { useToast } from '../ui/use-toast';
 
 const ContactForm = ({ className }: { className?: string }) => {
+  const { toast } = useToast();
+
   type HandleBlurEvent = {
     target: {
       value: string;
@@ -57,6 +60,19 @@ const ContactForm = ({ className }: { className?: string }) => {
       .then(
         () => {
           console.log('SUCCESS!');
+          toast({
+            title: 'Email sent successfully!',
+            description: new Date().toLocaleTimeString(),
+          });
+          // Clear form fields
+          form.current?.reset();
+
+          // Reset input states
+          setInputStates({
+            user_name: false,
+            user_email: false,
+            message: false,
+          });
         },
         (error) => {
           console.log('FAILED...', error.text);

@@ -5,7 +5,7 @@ function ProjectWrapper() {
   return (
     <section
       id="projects"
-      className="h-screen relative scroll-mt-16 overflow-hidden lg:py-16"
+      className="h-screen relative scroll-mt-16 overflow-hidden lg:py-16 h-md:h-auto"
     >
       <SectionTitle className="relative z-10" text="Projects" />
       <Projects />
