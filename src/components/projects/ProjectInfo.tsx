@@ -2,13 +2,14 @@ import { ProjectItem } from '@/utils/types';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { memo } from 'react';
 
 const ProjectInfo = ({
   className,
   data,
 }: {
   className?: string;
-  data: ProjectItem;
+  data: ProjectItem | null;
 }) => {
   return (
     <div className={`grid grid-cols-1 ${className}`}>
@@ -122,4 +123,4 @@ const ProjectInfo = ({
   );
 };
 
-export default ProjectInfo;
+export default memo(ProjectInfo);

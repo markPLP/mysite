@@ -1,5 +1,5 @@
 import { useFetchProjects } from '@/hooks/usefetchProjects';
-import { memo, useMemo, useState } from 'react';
+import { memo, useMemo, useState, useTransition } from 'react';
 import { Button } from '../ui/button';
 
 const ProjectTabs = ({
@@ -9,10 +9,13 @@ const ProjectTabs = ({
 }) => {
   const { data } = useFetchProjects('all');
   const [activeTag, setActiveTag] = useState<string>('all');
+  const [isPending, startTransition] = useTransition();
 
   const handleClick = (tag: string) => {
-    handleGetTag(tag);
-    setActiveTag(tag);
+    startTransition(() => {
+      handleGetTag(tag);
+      setActiveTag(tag);
+    });
   };
   // filter tags
   const tags = useMemo(
@@ -38,6 +41,7 @@ const ProjectTabs = ({
                 } text-[12px] w-full lg:w-auto`}
                 variant={tag === activeTag ? 'outline' : 'default'}
                 onClick={() => handleClick(tag)}
+                disabled={isPending}
               >
                 {tag}
               </Button>
