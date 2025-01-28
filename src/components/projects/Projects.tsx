@@ -39,32 +39,23 @@ const Projects = () => {
   if (error) return <div>Failed to load projects.</div>;
 
   return (
-    <section id="projects" className="py-8 relative md:py-28 grid">
-      {/* <div
-        className="!bg-cover absolute inset-0 brightness-50"
-        style={{ background: `url(${prodBg})` }}
-      ></div> */}
+    <section id="projects" className="relative overflow-hidden">
       <SectionTitle className="relative z-10" text="Projects" />
-      <div className="align-element flex flex-col m-auto pb-0 lg:max-w-[88%] lg:gap-y-[50px]">
-        <div className="">
-          {/* lg:grid lg:grid-cols-2 gap-8 */}
-          <div className="flex flex-col mb-7 self-end from-[#0d122498] bg-gradient-to-r to-[#0a0d3798] border-[#1b2c68a0] relative rounded-lg border px-7 py-10">
-            <ProjectTabs handleGetTag={handleGetTag} />
-            <ProjectCarousel data={data} handleClick={handleClick} />
-          </div>
-          <div className="lg:grid lg:grid-cols-2 gap-8">
-            <div>
-              <figure>
-                <img
-                  src={prodBg}
-                  alt="Project Preview"
-                  className="object-cover w-full h-full rounded-lg"
-                />
-              </figure>
-            </div>
-            <div className="from-[#0d122498] bg-gradient-to-r to-[#0a0d3798] border-[#1b2c68a0] rounded-lg border relative z-10 lg:mb-0">
-              <ProjectInfo data={websiteInfo} className="" />
-            </div>
+      <div className="align-element flex flex-col m-auto pb-0 px-0 max-w-[calc(100%-50px)] md:max-w-[calc(100%-77px)] md:mr-0 md:px-8 lg:max-w-[88%] lg:gap-y-[10px] xl:mr-auto">
+        <div className="mb-7 p-0 from-[#0d122498] bg-gradient-to-r to-[#0a0d3798] border-0 md:border md:p-9 md:mr-0 md:border-[#1b2c68a0] relative rounded-lg ">
+          <ProjectTabs handleGetTag={handleGetTag} />
+          <ProjectCarousel data={data} handleClick={handleClick} />
+        </div>
+        <div className="lg:grid lg:grid-cols-2 gap-8">
+          <figure className="flex self-center relative pt-[50%] overflow-hidden">
+            <img
+              src={prodBg}
+              alt="Project Preview"
+              className="object-contain w-full h-full rounded-lg absolute top-0 left-0 object-left"
+            />
+          </figure>
+          <div className="from-[#0d122498] bg-gradient-to-r to-[#0a0d3798] border-[#1b2c68a0] rounded-lg border relative z-10 lg:mb-0">
+            <ProjectInfo data={websiteInfo} className="" />
           </div>
         </div>
       </div>

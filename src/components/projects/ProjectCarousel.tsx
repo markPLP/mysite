@@ -13,22 +13,26 @@ const ProjectCarousel = ({
   handleClick: (project: ProjectItem) => void;
 }) => {
   const slidesCount =
-    (data?.data?.length ?? 0) > 5 ? 5 : data?.data?.length ?? 0;
+    (data?.data?.length ?? 0) > 8 ? 8 : data?.data?.length ?? 0;
 
-  // const getWidth = useMemo(() => {
-  //   switch (slidesCount) {
-  //     case 4:
-  //       return '740px';
-  //     case 3:
-  //       return '560px';
-  //     case 2:
-  //       return '350px';
-  //     case 1:
-  //       return '200px';
-  //     default:
-  //       return '900px'; // Default width
-  //   }
-  // }, [data]);
+  const getWidth = useMemo(() => {
+    switch (slidesCount) {
+      case 6:
+        return '90%';
+      case 5:
+        return '80%';
+      case 4:
+        return '70%';
+      case 3:
+        return '50%';
+      case 2:
+        return '30%';
+      case 1:
+        return '300px';
+      default:
+        return '100%'; // Default width
+    }
+  }, [data]);
 
   const settings = {
     dots: true,
@@ -38,7 +42,7 @@ const ProjectCarousel = ({
     slidesToScroll: 1,
     autoplay: true,
     arrow: true,
-    lazyLoad: 'progressive' as const,
+    // lazyLoad: 'progressive' as const,
     responsive: [
       {
         breakpoint: 1024,
@@ -102,14 +106,15 @@ const ProjectCarousel = ({
   );
 
   return (
-    <section
-      className="ml-auto overflow-hidden w-full max-w-[calc(100vw-30px)]"
-      // style={{ maxWidth: getWidth }}
-    >
-      {/* <Container>  min-w-[300px] max-w-[1000px]  */}
-      <Slider className="pt-6" {...settings}>
-        {projects}
-      </Slider>
+    <section className="m-auto overflow-hidden w-full">
+      <section
+        className="m-auto w-full max-w-[calc(100vw-30px)]"
+        style={{ width: getWidth }}
+      >
+        {/* max-w-[calc(100vw-30px)] */}
+        {/* <Container>  min-w-[300px] max-w-[1000px]  */}
+        <Slider {...settings}>{projects}</Slider>
+      </section>
     </section>
   );
 };
