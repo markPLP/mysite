@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Button } from '../ui/button';
 
 type AboutButtonProps = {
   data: { id: string; label: string }[];

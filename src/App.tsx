@@ -7,7 +7,7 @@ import About from './components/about/About';
 import Timeline from './components/experience/Timeline';
 import Projects from './components/projects/Projects';
 import NavbarMobile from './components/navbar/NavbarMobile';
-import Contact from './components/contact/contact';
+import Contact from './components/contact/Contact';
 
 // Lazy load components
 // const NavbarMobile = lazy(() => import('./components/navbar/NavbarMobile'));

@@ -2,9 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Container from '../global/Container';
 import SectionTitle from '../global/SectionTitle';
 import { Button } from '../ui/button';
-import ContactForm from './contactForm';
+import ContactForm from './ContactForm';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const Contact = () => {
   return (
