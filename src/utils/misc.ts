@@ -28,7 +28,7 @@ export const onLoadIntersectionObserver = ({
         });
       }
     },
-    { threshold: 0.2 } // Load when 20% of section is visible
+    { threshold: 0.1 } // Load when 20% of section is visible
   );
 
   sections.forEach(({ id }) => {
@@ -58,7 +58,7 @@ export const sectionIntersectionObserver = (state: any) => {
         }
       });
     },
-    { threshold: 0.5 } // Trigger when 50% of the section is visible
+    { threshold: 0.1 }
   );
 
   sections.forEach((section) => observer.observe(section));
