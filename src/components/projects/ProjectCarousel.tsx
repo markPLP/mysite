@@ -4,7 +4,6 @@ import Slider from 'react-slick';
 import { ProjectItem, ProjectsQueryResponse } from '@/utils/types';
 import { memo, useMemo } from 'react';
 import ProjectLoading from '../global/ProjectLoading';
-import { useTheme } from '../theme-provider';
 
 const ProjectCarousel = ({
   data,
