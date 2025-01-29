@@ -16,7 +16,6 @@ import { Button } from '../ui/button';
 export default function Timeline({ defaultColor }: { defaultColor?: string }) {
   return (
     <section
-      id="experience"
       className="scroll-mt-16 mb-12 mx-auto xl:place-items-center"
       // md:max-w-[600px] lg:max-w-[80%]
     >

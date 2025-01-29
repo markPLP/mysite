@@ -7,7 +7,7 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const Contact = () => {
   return (
-    <section id="contact" className="scroll-mt-16 py-11 lg:py-28">
+    <section className="scroll-mt-16 py-11 lg:py-28">
       <SectionTitle text="Let's connect!" />
       {/* <Container className="grid grid-cols-2 gap-32 md:gap-y-16"> */}
       <Container className="flex gap-x-10 flex-grow gap-y-10 flex-wrap xl:gap-32 md:gap-y-16 xl:flex-nowrap ">

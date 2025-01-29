@@ -9,7 +9,7 @@ const About = () => {
   const [currentItemId, setCurrentItemId] = useState<string>(aboutData[0].id);
 
   return (
-    <section id="about" className="scroll-mt-16 lg:h-screen h-md:h-auto">
+    <section className="scroll-mt-16 lg:h-screen h-md:h-auto">
       <SectionTitle text="About" />
       <Container className="flex">
         <article className="grid md:grid-cols-[1fr,2fr] gap-12">
