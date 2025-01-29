@@ -1,20 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { links } from '../../utils/data';
+import { sectionIntersectionObserver } from '@/utils/misc';
+import { log } from 'console';
 
 const NavbarMobile = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState('');
+  useEffect(() => {
+    sectionIntersectionObserver(setActiveSection);
+  }, []);
 
-  const calculateTransform = (index: number) => {
-    switch (index) {
-      case 0:
+  const calculateTransform = (id: string) => {
+    switch (id) {
+      case 'home':
         return 'translateX(calc(50px * 0))';
-      case 1:
+      case 'about':
         return 'translateX(calc(50px * 1 + (11px * 2)))';
-      case 2:
+      case 'experience':
         return 'translateX(calc(50px * 2 + (20px * 2) + 2px))';
-      case 3:
+      case 'projects':
         return 'translateX(calc(50px * 3 + (30px * 2) + 2px))';
-      case 4:
+      case 'contact':
         return 'translateX(calc(50px * 4 + (42px * 2) + 2px))';
       default:
         return 'translateX(0)';
@@ -28,16 +33,15 @@ const NavbarMobile = () => {
     >
       <div className="relative flex items-center px-5 w-[375px]">
         <ul className="flex justify-between w-full">
-          {links.map((item, index) => {
+          {links.map((item) => {
             const { id, href, text, icon } = item;
-
+            const isActive = activeSection === href.substring(1); // Remove "#" from href
             return (
               <li
                 key={id}
                 className={`relative w-[50px] h-[50px] flex flex-col justify-center items-center cursor-pointer transition-all z-10 ${
-                  activeIndex === index ? 'text-white' : 'text-[#222327]'
+                  isActive ? 'text-white' : 'text-[#222327]'
                 }`}
-                onClick={() => setActiveIndex(index)}
               >
                 <a
                   href={href}
@@ -45,7 +49,7 @@ const NavbarMobile = () => {
                 >
                   <i
                     className={`w-6 h-6 block transition-all duration-1000 ${
-                      activeIndex === index
+                      isActive
                         ? '-translate-y-[25px] text-white w-5 h-5 '
                         : 'text-[#222327]'
                     }`}
@@ -54,7 +58,7 @@ const NavbarMobile = () => {
                   </i>
                   <span
                     className={`absolute transition-all ${
-                      activeIndex === index
+                      isActive
                         ? 'opacity-100 translate-y-2'
                         : 'opacity-0 translate-y-5'
                     }`}
@@ -67,9 +71,10 @@ const NavbarMobile = () => {
           })}
 
           <li
+            id="indicator"
             className="absolute w-[50px] h-[50px] top-[-50%] rounded-full border-4 border-[#0c0a09] bg-custom-gradient transition-transform duration-500 z-0"
             style={{
-              transform: calculateTransform(activeIndex),
+              transform: calculateTransform(activeSection),
             }}
           >
             <span
