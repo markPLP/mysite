@@ -28,7 +28,7 @@ export const onLoadIntersectionObserver = ({
         });
       }
     },
-    { threshold: 0.1 } // Load when 20% of section is visible
+    { threshold: 0.1 } // Load when 10% of section is visible
   );
 
   sections.forEach(({ id }) => {
