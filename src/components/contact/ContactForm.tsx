@@ -97,7 +97,7 @@ const ContactForm = ({ className }: { className?: string }) => {
                 Name
               </label>
               <input
-                className={`bg-transparent h-12 w-full shadow-md border-2 px-3 py-2 ${
+                className={`bg-transparent h-12 w-full shadow-md border-2 px-3 py-2 rounded-md ${
                   inputStates.user_name ? 'border-secondary' : ''
                 }`}
                 type="text"
@@ -105,6 +105,7 @@ const ContactForm = ({ className }: { className?: string }) => {
                 onFocus={() => handleFocus('user_name')}
                 onBlur={(e) => handleBlur('user_name', e)}
                 onChange={(e) => handleChange('user_name', e)}
+                required
               />
             </div>
             <div className="relative">
@@ -118,7 +119,7 @@ const ContactForm = ({ className }: { className?: string }) => {
                 Email
               </label>
               <input
-                className={`!bg-transparent h-12 w-full shadow-md border-2 px-5 py-2 ${
+                className={`!bg-transparent h-12 w-full shadow-md border-2 px-5 py-2 rounded-md ${
                   inputStates.user_email ? 'border-secondary' : ''
                 }`}
                 type="email"
@@ -126,6 +127,7 @@ const ContactForm = ({ className }: { className?: string }) => {
                 onFocus={() => handleFocus('user_email')}
                 onBlur={(e) => handleBlur('user_email', e)}
                 onChange={(e) => handleChange('user_email', e)}
+                required
               />
             </div>
             <div className="relative md:col-span-2">
@@ -139,7 +141,7 @@ const ContactForm = ({ className }: { className?: string }) => {
                 Message
               </label>
               <textarea
-                className={`bg-transparent w-full shadow-md border-2 px-5 py-2 ${
+                className={`bg-transparent w-full shadow-md border-2 px-5 py-2 rounded-md ${
                   inputStates.message ? 'border-secondary' : ''
                 }`}
                 name="message"
