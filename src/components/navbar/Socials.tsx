@@ -13,24 +13,45 @@ const Socials = () => {
         <Button
           variant="link"
           className="p-0 transition-colors duration-300 ease-in-out hover:text-accent-foreground hover:bg-accent-background"
+          asChild
         >
-          <FontAwesomeIcon className="!w-8 !h-8 " icon={faFacebook} />
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon className="!w-8 !h-8 " icon={faFacebook} />
+          </a>
         </Button>
       </li>
       <li>
         <Button
           variant="link"
           className="p-0 transition-colors duration-300 ease-in-out hover:text-accent-foreground hover:bg-accent-background"
+          asChild
         >
-          <FontAwesomeIcon className="!w-8 !h-8" icon={faLinkedin} />
+          <a
+            href="https://www.linkedin.com/in/markmacz/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon className="!w-8 !h-8" icon={faLinkedin} />
+          </a>
         </Button>
       </li>
       <li>
         <Button
           variant="link"
           className="p-0 transition-colors duration-300 ease-in-out hover:text-accent-foreground hover:bg-accent-background"
+          asChild
         >
-          <FontAwesomeIcon className="!w-8 !h-8" icon={faGithub} />
+          <a
+            href="https://github.com/markPLP"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon className="!w-8 !h-8" icon={faGithub} />
+          </a>
         </Button>
       </li>
     </ul>
