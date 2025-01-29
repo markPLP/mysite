@@ -1,53 +1,51 @@
-import { useFetchProjects } from '@/hooks/usefetchProjects';
-import { memo, useMemo, useState, useTransition } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { Button } from '../ui/button';
+import { useFetchProjects } from '@/hooks/usefetchProjects';
 
 const ProjectTabs = ({
   handleGetTag,
+  filter,
 }: {
   handleGetTag: (tag: string) => void;
+  filter?: string;
 }) => {
   const { data } = useFetchProjects('all');
-  const [activeTag, setActiveTag] = useState<string>('all');
-  const [isPending, startTransition] = useTransition();
+  const [activeTag, setActiveTag] = useState<string>(filter ?? 'all');
+
+  console.log(activeTag, 'activeTag');
 
   const handleClick = (tag: string) => {
-    startTransition(() => {
-      handleGetTag(tag);
-      setActiveTag(tag);
-    });
+    // Correctly update the state and notify the parent
+    setActiveTag(tag);
+    handleGetTag(tag);
   };
-  // filter tags
-  const tags = useMemo(
-    () => [
+
+  // Generate tags dynamically based on fetched data
+  const tags = useMemo(() => {
+    if (!data?.data) return ['all']; // Fallback to "all" if no data
+    return [
       'all',
       ...new Set(
-        data?.data.flatMap((item) => item.tags.map((tag) => tag.toLowerCase()))
+        data.data.flatMap((item) => item.tags.map((tag) => tag.toLowerCase()))
       ),
-    ],
-    [data]
-  );
+    ];
+  }, [data]);
 
   return (
     <section className="m-auto relative z-10 justify-center gap-2 mb-6 flex-wrap grid grid-cols-2 lg:flex">
-      {tags &&
-        tags.map((tag, index) => {
-          return (
-            <div key={index}>
-              <Button
-                // size="sm"
-                className={`${
-                  tag === activeTag ? 'active' : ''
-                } text-[12px] w-full lg:w-auto`}
-                variant={tag === activeTag ? 'outline' : 'default'}
-                onClick={() => handleClick(tag)}
-                disabled={isPending}
-              >
-                {tag}
-              </Button>
-            </div>
-          );
-        })}
+      {tags.map((tag, index) => (
+        <div key={index}>
+          <Button
+            className={`${
+              tag === activeTag ? 'active' : ''
+            } text-[12px] w-full lg:w-auto`}
+            variant={tag === activeTag ? 'outline' : 'default'}
+            onClick={() => handleClick(tag)} // Correctly handle click events
+          >
+            {tag}
+          </Button>
+        </div>
+      ))}
     </section>
   );
 };

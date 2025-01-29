@@ -3,30 +3,36 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { ProjectItem, ProjectsQueryResponse } from '@/utils/types';
 import { memo, useMemo } from 'react';
+import ProjectLoading from '../global/ProjectLoading';
+import { useTheme } from '../theme-provider';
 
 const ProjectCarousel = ({
   data,
   handleClick,
+  isLoading,
 }: {
   data: ProjectsQueryResponse | undefined;
   // handleClick: (largeImage: string) => void;
   handleClick: (project: ProjectItem) => void;
+  isLoading: boolean;
 }) => {
   const slidesCount =
     (data?.data?.length ?? 0) > 8 ? 8 : data?.data?.length ?? 0;
 
   const getWidth = useMemo(() => {
+    const defaultWidth = 188 + 20;
+
     switch (slidesCount) {
       case 6:
-        return '90%';
+        return defaultWidth * 6 + 'px';
       case 5:
-        return '80%';
+        return defaultWidth * 5 + 'px';
       case 4:
-        return '70%';
+        return defaultWidth * 4 + 'px';
       case 3:
-        return '50%';
+        return defaultWidth * 3 + 'px';
       case 2:
-        return '30%';
+        return defaultWidth * 2 + 'px';
       case 1:
         return '300px';
       default:
@@ -40,36 +46,20 @@ const ProjectCarousel = ({
     speed: 500,
     slidesToShow: slidesCount,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     arrow: true,
     // lazyLoad: 'progressive' as const,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 2,
+          slidesToScroll: 1,
           infinite: true,
         },
       },
       {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          initialSlide: 3,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 330,
+        breakpoint: 530,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -88,12 +78,12 @@ const ProjectCarousel = ({
         return (
           <div
             key={project.id}
-            className="relative !flex items-center justify-end h-[70px] border-0 border-white"
+            className="relative !flex items-center h-[70px] border-0 border-white"
           >
             <img
               src={project.logoImage}
               alt={`${project.title} Preview`}
-              className="object-contain p-2 w-full h-full object-position-right"
+              className="p-2 w-full h-full object-contain"
             />
             <span
               onClick={() => handleClickCarousel(project)}
@@ -105,11 +95,14 @@ const ProjectCarousel = ({
     [data, handleClick]
   );
 
+  if (isLoading) return <ProjectLoading />;
+
   return (
     <section className="m-auto overflow-hidden w-full">
       <section
-        className="m-auto w-full max-w-[calc(100vw-30px)]"
-        style={{ width: getWidth }}
+        className={`m-auto`}
+        style={{ maxWidth: getWidth }}
+        // className={`m-auto w-full max-w-[calc(100vw-30px)] w-${getWidth}`}
       >
         {/* max-w-[calc(100vw-30px)] */}
         {/* <Container>  min-w-[300px] max-w-[1000px]  */}

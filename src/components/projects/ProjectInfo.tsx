@@ -3,16 +3,28 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faGlobe } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { memo } from 'react';
+import ProjectLoading from '../global/ProjectLoading';
+import { useTheme } from '../theme-provider';
 
 const ProjectInfo = ({
   className,
   data,
+  isLoading,
 }: {
   className?: string;
   data: ProjectItem | null;
+  isLoading: boolean;
 }) => {
+  if (isLoading) return <ProjectLoading />;
+
+  const theme = useTheme();
+
   return (
-    <div className={`grid grid-cols-1 ${className}`}>
+    <div
+      className={`grid grid-cols-1 from-[#0d122498] bg-gradient-to-r to-[#1a1a1b98] border-[#1b2c68a0] rounded-lg border relative z-10 lg:mb-0 ${className} ${
+        theme.theme === 'light' && 'bg-gray-800'
+      } `}
+    >
       <div className="flex-1 p-4 sm:p-6 text-neutral-200">
         <div className="mb-6 border-b border-gray-600 pb-4">
           <h2 className="text-lg font-bold text-neutral-200 lowercase">
@@ -91,31 +103,9 @@ const ProjectInfo = ({
                     </a>
                   )}
                 </span>
-                {/* <div className="ml-6">
-                  {'<'}a href="{data?.liveUrl.toString()}" target="_blank"
-                  rel="noopener noreferrer"
-                  {'>'}
-                  Website Link{'<'}/a{'>'}
-                </div> */}
-                {/* {data?.ghUrl && (
-                  <div className="ml-6">
-                    {'<'}a href="{data?.ghUrl.toString()}" target="_blank"
-                    rel="noopener noreferrer"
-                    {'>'}
-                    Visit Example 1{'<'}/a{'>'}
-                  </div>
-                )} */}
               </div>
             </div>
-            {/* <div className="ml-6">
-              <p>
-                {'}'} else {'{'}
-              </p>
-              <div className="ml-4">return 'Not clickable';</div>
-              <p>{'}'}</p>
-            </div> */}
           </div>
-          {/* <div className="ml-6">{'},'}</div> */}
           <p>{'};'}</p>
         </div>
       </div>

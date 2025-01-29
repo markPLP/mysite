@@ -20,7 +20,7 @@ export const useFetchProjects = (filter: string): UseQueryReturn => {
         queryParams['metadata.tags.sys.id[in]'] = filter;
       }
 
-      await new Promise((resolve) => setTimeout(resolve, 200));
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
       const response = await contentfulClient.getEntries(queryParams);
 
