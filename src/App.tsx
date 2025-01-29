@@ -43,9 +43,14 @@ const App = () => {
 
       <main>
         {sections.map(({ id, component: Section }) => (
-          <section key={id} id={id} style={{ minHeight: '100vh' }}>
+          <section
+            key={id}
+            id={id}
+            className="scroll-mt-28 min-h-[100vh]"
+            // style={{ minHeight: '100vh' }}
+          >
             {visibleSections.includes(id) ? (
-              <Suspense fallback={<ProjectLoading />}>
+              <Suspense>
                 <Section />
               </Suspense>
             ) : (
