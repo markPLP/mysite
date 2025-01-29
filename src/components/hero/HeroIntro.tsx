@@ -24,8 +24,14 @@ const HeroIntro = ({ className }: { className: string }) => {
         <Button asChild size="lg">
           <a href="#contact">Get in touch</a>
         </Button>
-        <Button size="lg" variant="outline">
-          Download CV
+        <Button asChild size="lg" variant="outline">
+          <a
+            href="https://drive.google.com/file/d/1BzpKZFf95O1wlI3jRk-MUoevtoN1CM2t/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download CV
+          </a>
         </Button>
       </div>
     </article>
