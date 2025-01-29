@@ -6,7 +6,6 @@ import Navbar from './components/navbar/Navbar';
 import NavbarMobile from './components/navbar/NavbarMobile';
 import { Toaster } from './components/ui/toaster';
 import { onLoadIntersectionObserver } from './utils/misc';
-import ProjectLoading from './components/global/ProjectLoading';
 
 // Lazy load sections
 const HeroBanner = lazy(() => import('./components/hero/HeroBanner'));
