@@ -56,11 +56,9 @@ export const sectionIntersectionObserver = (state: any) => {
           if (target?.id) {
             state(target.id);
           }
+        } else {
+          target.classList.remove('visible'); // Remove class when section is exiting
         }
-        // else {
-        //   target.classList.remove('visible'); // Remove class when section is exiting
-        //   console.log(target.id + ' is exiting');
-        // }
       });
     },
     { threshold: 0.1 } // Adjust threshold if needed
@@ -81,10 +79,9 @@ export const timelineElObserver = () => {
         let target = entry.target as HTMLElement;
         if (entry.isIntersecting) {
           target.classList.add('animate-timeline');
+        } else {
+          target.classList.remove('animate-timeline');
         }
-        // else {
-        //   target.classList.remove('animate-timeline');
-        // }
       });
     },
     { threshold: 0.5 }
