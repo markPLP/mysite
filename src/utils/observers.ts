@@ -47,7 +47,6 @@ export const sectionIntersectionObserver = (state: any) => {
     (entries) => {
       entries.forEach((entry) => {
         let target = entry.target as HTMLElement;
-
         if (entry.isIntersecting) {
           target.classList.add('visible');
           // Traverse upwards to find the closest parent with an ID
@@ -56,7 +55,6 @@ export const sectionIntersectionObserver = (state: any) => {
           }
           if (target?.id) {
             state(target.id);
-            console.log(target.id + ' is intersecting');
           }
         }
         // else {
@@ -65,10 +63,34 @@ export const sectionIntersectionObserver = (state: any) => {
         // }
       });
     },
-    { threshold: 0.3 } // Adjust threshold if needed
+    { threshold: 0.1 } // Adjust threshold if needed
   );
 
   sections.forEach((section) => observer.observe(section));
+
+  return () => observer.disconnect(); // Cleanup observer on unmount
+};
+
+export const timelineElObserver = () => {
+  const timelineElements = document.querySelectorAll('.timeline-element');
+  if (timelineElements.length === 0) return; // Avoid observing nothing
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        let target = entry.target as HTMLElement;
+        if (entry.isIntersecting) {
+          target.classList.add('animate-timeline');
+        }
+        // else {
+        //   target.classList.remove('animate-timeline');
+        // }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  timelineElements.forEach((element) => observer.observe(element));
 
   return () => observer.disconnect(); // Cleanup observer on unmount
 };
