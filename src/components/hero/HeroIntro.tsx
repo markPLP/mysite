@@ -9,9 +9,13 @@ const HeroIntro = ({ className }: { className: string }) => {
           src={heroImg}
           alt="hero image"
           className="object-cover w-full h-full"
+          aria-label="Mark Phillip"
         />
       </figure>
-      <h1 className="text-4xl sm:text-[54px] font-bold mb-3 leading-tight">
+      <h1
+        className="text-4xl sm:text-[54px] font-bold mb-3 leading-tight"
+        aria-label="Mark Phillip"
+      >
         Hi, i'm <span className="text-primary">Mark Phillip</span>
       </h1>
       <p>
@@ -22,13 +26,16 @@ const HeroIntro = ({ className }: { className: string }) => {
       </p>
       <div className="mt-8 flex flex-wrap gap-3 md:gap-4 ">
         <Button asChild size="lg">
-          <a href="#contact">Get in touch</a>
+          <a href="#contact" aria-label="contact form">
+            Get in touch
+          </a>
         </Button>
         <Button asChild size="lg" variant="outline">
           <a
             href="https://drive.google.com/file/d/1BzpKZFf95O1wlI3jRk-MUoevtoN1CM2t/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Download Mark Phillip's CV"
           >
             Download CV
           </a>

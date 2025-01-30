@@ -20,7 +20,7 @@ export default function Timeline({ defaultColor }: { defaultColor?: string }) {
       // md:max-w-[600px] lg:max-w-[80%]
     >
       <SectionTitle text="Experience" />
-      <Container className="flex flex-col gap-y-[100px]">
+      <Container className="flex flex-col gap-y-[50px]">
         {timelineElements.map((element, index) => {
           const { id, title, company, description, date } = element;
           const isLeft = index % 2 === 0;
@@ -29,14 +29,12 @@ export default function Timeline({ defaultColor }: { defaultColor?: string }) {
           return (
             <article
               key={id}
-              className={`${
-                isLeft && 'l-left'
-              } md:grid md:grid-cols-[auto,1fr] lg:grid-cols-[1fr,auto,1fr] border-0 relative lg:w-full`}
+              className={`md:grid md:grid-cols-[auto,1fr] lg:grid-cols-[1fr,auto,1fr] border-0 relative lg:w-full`}
             >
               <div
                 className={`${
                   isLeft
-                    ? 'l-left hidden order-none xl:block lg:order-3'
+                    ? 'hidden order-none xl:block lg:order-3'
                     : 'order-1 hidden lg:block'
                 } w-full`}
               ></div>

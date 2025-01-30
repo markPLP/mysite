@@ -4,6 +4,29 @@ module.exports = {
   content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        heading: ['Roboto Condensed', 'serif'],
+        regular: ['Roboto', 'serif'],
+      },
+      // keyframes: {
+      //   slideLeft: {
+      //     '0%': { opacity: 0, transform: 'translateX(-100px)' },
+      //     '100%': { opacity: 1, transform: 'translateX(0)' },
+      //   },
+      //   slideRight: {
+      //     '0%': { opacity: 0, transform: 'translateX(100px)' },
+      //     '100%': { opacity: 1, transform: 'translateX(0)' },
+      //   },
+      //   fadeUp: {
+      //     '0%': { opacity: 0, transform: 'translateY(50px)' },
+      //     '100%': { opacity: 1, transform: 'translateY(0)' },
+      //   },
+      // },
+      // animation: {
+      //   slideInLeft: 'slideLeft 1s ease-out forwards',
+      //   slideInRight: 'slideRight 1s ease-out forwards',
+      //   fadeInUp: 'fadeUp 1s ease-out forwards',
+      // },
       screens: {
         // Add custom height-based breakpoints
         'h-sm': { raw: '(max-height: 640px)' }, // small height
@@ -14,10 +37,6 @@ module.exports = {
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #ec4899, #8b5cf6)', // Matches the Tailwind classes
         'custom-gradient-hover': 'linear-gradient(to right, #ff758c, #ff3c61)', // Matches the Tailwind classes
-      },
-      fontFamily: {
-        heading: ['Roboto Condensed', 'serif'],
-        regular: ['Roboto', 'serif'],
       },
       borderRadius: {
         lg: 'var(--radius)',

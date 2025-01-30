@@ -30,7 +30,7 @@ const Contact = () => {
     <section className="scroll-mt-16 py-11 lg:py-28">
       <SectionTitle text="Let's connect!" />
       <Container className="flex gap-x-10 flex-grow gap-y-10 flex-wrap xl:gap-32 md:gap-y-16 xl:flex-nowrap">
-        <article className="xl:max-w-[450px]">
+        <article className="xl:max-w-[450px] slide-in-left">
           <h2 className="text-3xl mb-6">Hi there! 👋 </h2>
           <p>
             I'm a passionate frontend developer who loves crafting clean,
@@ -55,7 +55,7 @@ const Contact = () => {
             </Button>
           </div>
         </article>
-        <ContactForm className="w-full" />
+        <ContactForm className="w-full slide-in-right" />
       </Container>
     </section>
   );

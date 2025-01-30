@@ -49,7 +49,7 @@ const App = () => {
             // style={{ minHeight: '100vh' }}
           >
             {visibleSections.includes(id) ? (
-              <Suspense>
+              <Suspense fallback={<LoadingSpinner />}>
                 <Section />
               </Suspense>
             ) : (
@@ -66,3 +66,11 @@ const App = () => {
 };
 
 export default App;
+
+function LoadingSpinner() {
+  return (
+    <div className="flex justify-center items-center">
+      <div className="animate-spin rounded-full border-t-4 border-blue-600 h-12 w-12"></div>
+    </div>
+  );
+}

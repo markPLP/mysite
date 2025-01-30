@@ -85,6 +85,7 @@ const ContactForm = ({ className }: { className?: string }) => {
                 className={`bg-transparent h-12 w-full shadow-md border-2 px-3 py-2 rounded-md ${
                   inputStates.user_name ? 'border-secondary' : ''
                 }`}
+                aria-label="Name"
                 type="text"
                 name="user_name"
                 onFocus={() => handleFocus('user_name')}
@@ -107,6 +108,7 @@ const ContactForm = ({ className }: { className?: string }) => {
                 className={`!bg-transparent h-12 w-full shadow-md border-2 px-5 py-2 rounded-md ${
                   inputStates.user_email ? 'border-secondary' : ''
                 }`}
+                aria-label="email"
                 type="email"
                 name="user_email"
                 onFocus={() => handleFocus('user_email')}
@@ -129,6 +131,7 @@ const ContactForm = ({ className }: { className?: string }) => {
                 className={`bg-transparent w-full shadow-md border-2 px-5 py-2 rounded-md ${
                   inputStates.message ? 'border-secondary' : ''
                 }`}
+                aria-label="message"
                 name="message"
                 onFocus={() => handleFocus('message')}
                 onBlur={(e) => handleBlur('message', e)}

@@ -1,3 +1,5 @@
+// code spliting with dynamic import
+// load components only when they are needed
 export const onLoadIntersectionObserver = ({
   setVisibleSections,
   sections,
@@ -40,25 +42,30 @@ export const onLoadIntersectionObserver = ({
 };
 
 export const sectionIntersectionObserver = (state: any) => {
-  const sections = document.querySelectorAll('section');
+  const sections = document.querySelectorAll('section[id]');
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
+        let target = entry.target as HTMLElement;
+
         if (entry.isIntersecting) {
-          let target = entry.target as HTMLElement;
+          target.classList.add('visible');
           // Traverse upwards to find the closest parent with an ID
           while (target && !target.id) {
             target = target.parentElement as HTMLElement;
           }
           if (target?.id) {
-            // setActiveSection(target.id);
             state(target.id);
             console.log(target.id + ' is intersecting');
           }
         }
+        // else {
+        //   target.classList.remove('visible'); // Remove class when section is exiting
+        //   console.log(target.id + ' is exiting');
+        // }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0.3 } // Adjust threshold if needed
   );
 
   sections.forEach((section) => observer.observe(section));

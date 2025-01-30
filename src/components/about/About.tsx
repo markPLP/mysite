@@ -13,7 +13,7 @@ const About = () => {
       <SectionTitle text="About" />
       <Container className="flex">
         <article className="grid md:grid-cols-[1fr,2fr] gap-12">
-          <div>
+          <div className="slide-in-left">
             <p className="mb-3 text-xl uppercase md:text-right">I am</p>
             <h2 className="text-3xl font-bold text-primary pb-4 md:text-right md:mb-6">
               A Frontend Developer
@@ -24,7 +24,7 @@ const About = () => {
               currentItemId={currentItemId}
             />
           </div>
-          <div>
+          <div className="slide-in-right">
             <AboutInfo currentItemId={currentItemId} data={aboutData} />
           </div>
         </article>
