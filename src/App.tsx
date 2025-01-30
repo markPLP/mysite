@@ -5,7 +5,8 @@ import Header from './components/navbar/Header';
 import Navbar from './components/navbar/Navbar';
 import NavbarMobile from './components/navbar/NavbarMobile';
 import { Toaster } from './components/ui/toaster';
-import { onLoadIntersectionObserver } from './utils/misc';
+import { onLoadIntersectionObserver } from './utils/observers';
+import NinjaLoader from './components/global/NinjaLoader';
 
 // Lazy load sections
 const HeroBanner = lazy(() => import('./components/hero/HeroBanner'));
@@ -26,12 +27,31 @@ const sections = [
 
 const App = () => {
   const [visibleSections, setVisibleSections] = useState<string[]>([]);
-  console.log(visibleSections, 'visibleSections');
+  const [isAppReady, setIsAppReady] = useState(false); // App loading state
 
+  // Simulate loading before showing the app
   useEffect(() => {
-    // setVisibleSections - set home as visible section on page load
-    onLoadIntersectionObserver({ setVisibleSections, sections });
+    const timer = setTimeout(() => {
+      setIsAppReady(true);
+    }, 6000); // Adjust timing as needed
+
+    return () => clearTimeout(timer);
   }, []);
+
+  // Initialize Intersection Observer after the app is ready
+  useEffect(() => {
+    if (isAppReady) {
+      onLoadIntersectionObserver({ setVisibleSections, sections });
+
+      // Ensure at least the "home" section is visible on initial load
+      setVisibleSections(['home']);
+    }
+  }, [isAppReady]);
+
+  // Show loading screen until the app is ready
+  if (!isAppReady) {
+    return <NinjaLoader />;
+  }
 
   return (
     <ThemeProvider>
@@ -45,8 +65,7 @@ const App = () => {
           <section
             key={id}
             id={id}
-            className="scroll-mt-28 min-h-[100vh]"
-            // style={{ minHeight: '100vh' }}
+            className="scroll-mt-28 min-h-[100vh] overflow-x-hidden"
           >
             {visibleSections.includes(id) ? (
               <Suspense fallback={<LoadingSpinner />}>
@@ -67,9 +86,10 @@ const App = () => {
 
 export default App;
 
+// Loading Spinner (for sections)
 function LoadingSpinner() {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center min-h-[100vh]">
       <div className="animate-spin rounded-full border-t-4 border-blue-600 h-12 w-12"></div>
     </div>
   );

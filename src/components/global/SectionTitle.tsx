@@ -6,9 +6,9 @@ function SectionTitle({
   className?: string;
 }) {
   return (
-    <div className={`${className} animate-fadeInUp`}>
+    <div className={`${className} fade-in-up`}>
       <h2
-        className="text-4xl md:text-7xl font-bold tracking-wider uppercase md:mb-8 text-center"
+        className="text-6xl md:text-7xl font-bold tracking-wider uppercase md:mb-8 text-center"
         aria-label="Page section title"
       >
         {text}

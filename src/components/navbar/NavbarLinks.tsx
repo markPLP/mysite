@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { links } from '../../utils/data';
-import { sectionIntersectionObserver } from '@/utils/misc';
+import { sectionIntersectionObserver } from '@/utils/observers';
 
 const NavbarLinks = () => {
   const [activeSection, setActiveSection] = useState('');

@@ -24,7 +24,7 @@ const ProjectImage = ({
       className={`flex self-center relative pt-[50%] overflow-hidden ${className}`}
     >
       <img
-        key={imageKey} // Changing the key will force React to unmount and remount the image
+        key={imageKey}
         src={prodBg}
         alt="Project Preview"
         className="object-cover w-full h-full rounded-lg absolute top-0 left-0 object-left border fade-in-up" // Initial class

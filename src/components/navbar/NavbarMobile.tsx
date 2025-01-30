@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { links } from '../../utils/data';
-import { sectionIntersectionObserver } from '@/utils/misc';
+import { sectionIntersectionObserver } from '@/utils/observers';
 
 const NavbarMobile = () => {
   const [activeSection, setActiveSection] = useState('');

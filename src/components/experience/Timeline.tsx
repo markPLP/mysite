@@ -12,15 +12,21 @@ import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
 import Container from '../global/Container';
 import SectionTitle from '../global/SectionTitle';
 import { Button } from '../ui/button';
+import { useEffect } from 'react';
+import { timelineElObserver } from '@/utils/observers';
 
 export default function Timeline({ defaultColor }: { defaultColor?: string }) {
+  useEffect(() => {
+    timelineElObserver();
+  }, []);
+
   return (
     <section
       className="scroll-mt-16 mb-12 mx-auto xl:place-items-center"
       // md:max-w-[600px] lg:max-w-[80%]
     >
       <SectionTitle text="Experience" />
-      <Container className="flex flex-col gap-y-[50px]">
+      <Container className="flex flex-col gap-y-[100px] md:gap-y-[50px]">
         {timelineElements.map((element, index) => {
           const { id, title, company, description, date } = element;
           const isLeft = index % 2 === 0;
@@ -48,8 +54,10 @@ export default function Timeline({ defaultColor }: { defaultColor?: string }) {
               </div>
               <Card
                 className={`${
-                  isLeft ? 'l-left order-none md:order-1 md:block' : 'order-3'
-                } border border-gray-600 rounded-lg px-5 py-7 bg-gray-800 w-full z-10 relative`}
+                  isLeft
+                    ? 'order-none md:order-1 md:block slide-to-left timeline-element-left'
+                    : 'order-3 slide-to-right timeline-element-right'
+                } border border-gray-600 rounded-lg px-5 py-7 bg-gray-800 w-full z-10 relative timeline-element`}
               >
                 <CardHeader className="p-0">
                   <CardTitle className="text-3xl font-medium text-white">
