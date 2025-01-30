@@ -4,25 +4,10 @@ import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
 import Socials from '../navbar/Socials';
 import { useToast } from '../ui/use-toast';
+import { EmailForm, HandleBlurEvent } from '@/utils/types';
 
 const ContactForm = ({ className }: { className?: string }) => {
   const { toast } = useToast();
-
-  type HandleBlurEvent = {
-    target: {
-      value: string;
-    };
-  };
-
-  type EmailFormElements = {
-    user_name: HTMLInputElement;
-    user_email: HTMLInputElement;
-    message: HTMLTextAreaElement;
-  };
-
-  type EmailForm = HTMLFormElement & {
-    elements: EmailFormElements;
-  };
 
   const form = useRef<HTMLFormElement>(null);
 
