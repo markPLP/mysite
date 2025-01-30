@@ -12,8 +12,6 @@ const ProjectTabs = ({
   const { data } = useFetchProjects('all');
   const [activeTag, setActiveTag] = useState<string>(filter ?? 'all');
 
-  console.log(activeTag, 'activeTag');
-
   const handleClick = (tag: string) => {
     // Correctly update the state and notify the parent
     setActiveTag(tag);
@@ -22,11 +20,11 @@ const ProjectTabs = ({
 
   // Generate tags dynamically based on fetched data
   const tags = useMemo(() => {
-    if (!data?.data) return ['all']; // Fallback to "all" if no data
+    // if (!data?.data) return ['all']; // Fallback to "all" if no data
     return [
       'all',
       ...new Set(
-        data.data.flatMap((item) => item.tags.map((tag) => tag.toLowerCase()))
+        data?.data.flatMap((item) => item.tags.map((tag) => tag.toLowerCase()))
       ),
     ];
   }, [data]);

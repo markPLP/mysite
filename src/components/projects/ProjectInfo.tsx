@@ -83,21 +83,21 @@ const ProjectInfo = ({
             <div className="ml-6">
               <div className="ml-6">
                 return{' '}
-                <span>
+                <span className="inline-flex items-center gap-2">
                   <a
                     href={data?.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="relative top-1"
+                    className="relative top-1 inline-block"
                   >
-                    <FontAwesomeIcon icon={faGlobe} className="text-2xl mr-2" />
+                    <FontAwesomeIcon icon={faGlobe} className="text-2xl" />
                   </a>
                   {data?.ghUrl && (
                     <a
-                      href={data?.liveUrl}
+                      href={data?.ghUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="relative top-1"
+                      className="relative top-1 inline-block"
                     >
                       <FontAwesomeIcon icon={faGithub} className="text-2xl" />
                     </a>

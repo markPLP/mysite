@@ -62,3 +62,19 @@ export type AllTags = {
   // };
   sys: string;
 };
+
+export type HandleBlurEvent = {
+  target: {
+    value: string;
+  };
+};
+
+export type EmailFormElements = {
+  user_name: HTMLInputElement;
+  user_email: HTMLInputElement;
+  message: HTMLTextAreaElement;
+};
+
+export type EmailForm = HTMLFormElement & {
+  elements: EmailFormElements;
+};

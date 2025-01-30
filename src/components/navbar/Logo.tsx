@@ -3,10 +3,10 @@ const Logo = ({ className }: { className?: string }) => {
     <div
       className={`logo block border-[2px] w-auto m-auto p-3 mt-8 ${className}`}
     >
-      <span className="block font-heading font-bold text-[30px] leading-7">
+      <span className="block font-heading font-bold text-[30px] leading-7 text-white">
         MP
       </span>
-      <span className="block font-heading font-bold text-[30px] leading-7">
+      <span className="block font-heading font-bold text-[30px] leading-7 text-white">
         LP
       </span>
       {/* <Link to="/">

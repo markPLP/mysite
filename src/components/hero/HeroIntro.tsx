@@ -15,12 +15,12 @@ const HeroIntro = ({ className }: { className: string }) => {
         Hi, i'm <span className="text-primary">Mark Phillip</span>
       </h1>
       <p>
-        <span className="text-purple-400">export </span>
+        {/* <span className="text-purple-400">export </span> */}
         <span className="text-green-400">const </span>{' '}
         <span className="text-blue-400">my_GOAL</span> = 2 *
         (your_SATISFACTION);
       </p>
-      <div className="mt-8 flex gap-4 flex-wrap">
+      <div className="mt-8 flex flex-wrap gap-3 md:gap-4 ">
         <Button asChild size="lg">
           <a href="#contact">Get in touch</a>
         </Button>
