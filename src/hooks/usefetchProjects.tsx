@@ -6,7 +6,7 @@ import {
   UseQueryReturn,
 } from '@/utils/types';
 
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 export const useFetchProjects = (filter: string): UseQueryReturn => {
   const { isLoading, error, data } = useQuery<ProjectsQueryResponse>({
