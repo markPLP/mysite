@@ -41,7 +41,9 @@ export const onLoadIntersectionObserver = ({
   return () => observer.disconnect();
 };
 
-export const sectionIntersectionObserver = (state: any) => {
+export const sectionIntersectionObserver = <T extends (id: string) => void>(
+  state: T
+) => {
   const sections = document.querySelectorAll('section[id]');
   const observer = new IntersectionObserver(
     (entries) => {
