@@ -33,6 +33,12 @@ import icoSupabase from '../assets/ico-supabase.svg';
 import icoClerk from '../assets/ico-clerk.svg';
 import icoFigma from '../assets/ico-figma.svg';
 import icoContent from '../assets/ico-contentful.svg';
+import icoShopify from '../assets/ico-shopify.svg';
+import icoWordPress from '../assets/ico-wordpress.svg';
+import icoConvert from '../assets/ico-convert.svg';
+import icoAbTest from '../assets/ico-abtest.svg';
+import icoBem from '../assets/ico-bem.svg';
+import icoBootstrap from '../assets/ico-bootstrap.svg';
 import { AboutItem, ResumeData } from './types';
 
 export const links = [
@@ -94,6 +100,18 @@ export const aboutData: AboutItem[] = [
         type: 'skills',
         content: [
           {
+            id: 'cro',
+            title: 'CRO & Platforms',
+            skills: [
+              { name: 'Shopify Liquid', icon: icoShopify },
+              { name: 'WordPress', icon: icoWordPress },
+              { name: 'Convert.com', icon: icoConvert },
+              { name: 'A/B Testing', icon: icoAbTest },
+              { name: 'BEM', icon: icoBem },
+              { name: 'Bootstrap', icon: icoBootstrap },
+            ],
+          },
+          {
             id: 'frontend',
             title: 'Frontend Development',
             skills: [
@@ -113,7 +131,7 @@ export const aboutData: AboutItem[] = [
             title: 'Backend Development',
             skills: [
               { name: 'Prisma', icon: icoPrisma },
-              { name: 'PostgresSQL', icon: icoPostgresSQL },
+              { name: 'PostgreSQL', icon: icoPostgresSQL },
               { name: 'GraphQL', icon: icoGraphQL },
               { name: 'Supabase', icon: icoSupabase },
             ],
@@ -139,24 +157,24 @@ export const aboutData: AboutItem[] = [
   {
     id: 'about-me',
     label: 'about me',
-    title: 'Welcome to my corner of the web! 🚀',
+    title: 'Frontend developer, 10+ years in',
     description: [
       {
         type: 'text',
         content:
-          'I am a passionate web developer with a strong foundation in front-end development. I specialize in crafting responsive, user-friendly websites and applications that deliver seamless user experiences. My goal now is to learn new technologies and expand my skill set to stay ahead of the curve in the ever-evolving tech industry.',
+          "I'm a frontend developer with over a decade of experience building responsive, production-ready websites across Shopify, WordPress and modern JavaScript stacks. I turn designs, business goals and experiment ideas into clean code that works in every browser, and I'm most at home on complex, dynamic sites where the details matter.",
       },
     ],
   },
   {
     id: 'whats-going-on',
     label: "what's going on?",
-    title: 'Full-stack developer in the making',
+    title: 'Building experiments that move the needle',
     description: [
       {
         type: 'text',
         content:
-          'I am currently diving into the React framework and its rich ecosystem, exploring the art of building dynamic and interactive user interfaces. Alongside this, I’m immersing myself in the fascinating world of full-stack development, learning how to craft seamless applications from front to back.',
+          "Right now I'm a CRO developer at Scalemessaging, building A/B tests and custom Shopify sections on complex storefronts and single-page apps. Outside work I keep sharpening my React, Next.js and TypeScript skills, and I'm building AI-assisted workflows that turn Figma designs into production sites faster.",
       },
     ],
   },
@@ -177,6 +195,8 @@ export const aboutData: AboutItem[] = [
           'TypeScript: Error prevention and code readability.',
           'Shadcn/ui: Customizable, responsive components.',
           'Tailwind CSS: Stylish designs without custom CSS.',
+          'Vite + React Router: Fast builds and a lazy-loaded resume page.',
+          'Contentful + TanStack Query: Projects managed in a CMS, cached on the client.',
         ],
       },
       {
@@ -272,7 +292,7 @@ export const timelineElements = [
 //     title: 'Backend Development',
 //     skills: [
 //       { name: 'Prisma', icon: icoPrisma },
-//       { name: 'PostgresSQL', icon: icoPostgresSQL },
+//       { name: 'PostgreSQL', icon: icoPostgresSQL },
 //       { name: 'GraphQL', icon: icoGraphQL },
 //       { name: 'Supabase', icon: icoSupabase },
 //     ],
