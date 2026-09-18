@@ -48,7 +48,7 @@ export default function Timeline({ defaultColor }: { defaultColor?: string }) {
                 <div
                   className={`${color} w-px h-full translate-x-5 translate-y-10 opacity-30`}
                 ></div>
-                <span className="w-14 h-14 flex items-center justify-center rounded-full border-2 border-primary bg-custom-gradient relative">
+                <span className="w-14 h-14 flex items-center justify-center text-center text-xs leading-tight rounded-full border-2 border-primary bg-custom-gradient relative">
                   {date}
                 </span>
               </div>
@@ -93,7 +93,7 @@ export default function Timeline({ defaultColor }: { defaultColor?: string }) {
                       );
                     })}
                   </div>
-                  <span className="sm:md:hidden z-20 absolute left-0 -top-[70px]  w-14 h-14 flex items-center justify-center rounded-full border-2 border-primary bg-custom-gradient">
+                  <span className="sm:md:hidden z-20 absolute left-0 -top-[70px]  w-14 h-14 flex items-center justify-center text-center text-xs leading-tight rounded-full border-2 border-primary bg-custom-gradient">
                     {element.date}
                   </span>
                   <FontAwesomeIcon
