@@ -33,7 +33,7 @@ import icoSupabase from '../assets/ico-supabase.svg';
 import icoClerk from '../assets/ico-clerk.svg';
 import icoFigma from '../assets/ico-figma.svg';
 import icoContent from '../assets/ico-contentful.svg';
-import { AboutItem } from './types';
+import { AboutItem, ResumeData } from './types';
 
 export const links = [
   {
@@ -292,3 +292,98 @@ export const timelineElements = [
 //     ],
 //   },
 // ];
+
+// Resume — rendered at /resume and mirrored by public/resume.pdf.
+// Deliberately omits the phone number, street address and the referee block that
+// appear on the private PDF: this page is public and indexable.
+export const resumeData: ResumeData = {
+  name: 'Mark Phillip Las Piñas',
+  role: 'Frontend Developer / CRO Developer',
+  summary:
+    'Frontend Developer with 10+ years of experience delivering responsive, production-ready web experiences across Shopify, WordPress, and modern JavaScript environments. Strong background in frontend development, Shopify Liquid, and CRO/A/B testing, with experience turning designs, business requirements, and experimentation hypotheses into reliable implementations. Skilled in working with complex and dynamic websites while maintaining clean, scalable, and cross-browser compatible code.',
+  location: 'Bislig City, Philippines',
+  email: 'mpclaspinas@gmail.com',
+  pdfUrl: '/resume.pdf',
+  skills: [
+    'HTML/CSS',
+    'JavaScript / React JS',
+    'React / Next / TypeScript',
+    'TailwindCSS / DaisyUI / Shadcn',
+    'Bootstrap',
+    'BEM Methodology',
+    'WordPress Frontend Development',
+    'Shopify Liquid / Convert.com CRO tooling',
+    'Figma to HTML/CSS/JavaScript',
+    'SEO Principles',
+    'Git/GitHub',
+  ],
+  experience: [
+    {
+      id: nanoid(),
+      title: 'CRO Developer',
+      company: 'Scalemessaging | Remote',
+      date: '2025 - 2026',
+      responsibilities: [
+        'Build and deploy A/B tests and conversion-focused experiments using JavaScript, HTML, CSS, and Shopify Liquid.',
+        'Develop custom Shopify theme sections, components, and page modifications based on CRO requirements.',
+        'Implement experiments on complex Shopify, SPA, and JavaScript-heavy websites, including dynamically rendered and hydrated content.',
+        'Work closely with CRO strategists and designers to translate experiment concepts into accurate, responsive implementations.',
+        'Implement conversion tracking and experiment goals to ensure user interactions are properly measured.',
+        'Troubleshoot dynamic DOM elements, third-party integrations, responsive layouts, and browser-specific issues.',
+        'QA experiments across desktop and mobile devices, including iOS Safari, before and after deployment.',
+        'Write reusable and maintainable experiment code while ensuring variations are idempotent and resilient to dynamic page changes.',
+        'Collaborate with the wider CRO team to improve experiment development workflows and deliver tests efficiently.',
+      ],
+    },
+    {
+      id: nanoid(),
+      title: 'Freelance Web Developer',
+      company: 'Upwork | Remote',
+      date: '2024 - Present',
+      responsibilities: [
+        'Build and optimize web applications using React.js and WordPress.',
+        'Develop custom React components and manage state with Redux Toolkit.',
+        'Enhance UI/UX with Tailwind CSS.',
+        'Customize WordPress themes and develop custom JavaScript solutions — search features and API integrations — to extend WordPress functionality.',
+      ],
+    },
+    {
+      id: nanoid(),
+      title: 'Frontend Developer',
+      company: 'Dash10 Manage Services | Davao, Philippines',
+      date: '2017 - 2024',
+      responsibilities: [
+        'Collaborate with the project manager and designer to build websites from PSD and Figma into semantic HTML5/CSS3/JavaScript, incorporated into an in-house CMS or WordPress. WordPress frontend development using DIVI.',
+        'Ensure the technical feasibility of UI/UX designs.',
+        'Good understanding of SEO principles and ensuring that applications adhere to them.',
+        'Test and debug issues across different browsers and platforms.',
+        'Develop new user-facing features using HTML, CSS, JavaScript, and other relevant frameworks/libraries.',
+      ],
+    },
+    {
+      id: nanoid(),
+      title: 'Frontend Developer',
+      company: 'Zeald | New Zealand | Remote',
+      date: '2014 - 2017',
+      responsibilities: [
+        'Maintain and improve the in-house CMS websites.',
+        'Develop new user-facing features using HTML, CSS, JavaScript, and other relevant frameworks/libraries.',
+        'Test and debug issues across different browsers and platforms.',
+      ],
+    },
+  ],
+  education: [
+    {
+      id: nanoid(),
+      qualification: 'BS in Information Technology',
+      institution: 'De la Salle John Bosco College',
+      date: '2007 - 2011',
+    },
+    {
+      id: nanoid(),
+      qualification: 'High School',
+      institution: 'Saint Vincent de Paul College',
+      date: '2001 - 2005',
+    },
+  ],
+};

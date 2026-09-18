@@ -78,3 +78,30 @@ export type EmailFormElements = {
 export type EmailForm = HTMLFormElement & {
   elements: EmailFormElements;
 };
+
+export type ResumeRole = {
+  id: string;
+  title: string;
+  company: string;
+  date: string;
+  responsibilities: string[];
+};
+
+export type ResumeEducation = {
+  id: string;
+  qualification: string;
+  institution: string;
+  date: string;
+};
+
+export type ResumeData = {
+  name: string;
+  role: string;
+  summary: string;
+  location: string;
+  email: string;
+  pdfUrl: string;
+  skills: string[];
+  experience: ResumeRole[];
+  education: ResumeEducation[];
+};

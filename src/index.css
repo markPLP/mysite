@@ -241,3 +241,82 @@ body {
   animation: typing 5s steps(22) infinite alternate,
     blink 0.7s step-end infinite;
 }
+
+/* Print / PDF — the /resume route doubles as the source for public/resume.pdf.
+   Forces a light, compact, single-column, ink-friendly layout regardless of theme. */
+@media print {
+  @page {
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10pt;
+  }
+
+  .resume-page,
+  .resume-page * {
+    background: transparent !important;
+    color: #000 !important;
+    border-color: #aaa !important;
+    box-shadow: none !important;
+  }
+
+  .resume-page {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .resume-page .resume-accent {
+    color: #444 !important;
+  }
+
+  .resume-page h1 {
+    font-size: 22pt;
+    margin-bottom: 0.1rem;
+  }
+
+  .resume-page h2 {
+    font-size: 13pt;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.15rem;
+    break-after: avoid;
+  }
+
+  .resume-page .resume-intro {
+    margin-bottom: 1rem;
+  }
+
+  .resume-page .resume-intro p {
+    margin-bottom: 0.4rem;
+  }
+
+  .resume-page .resume-grid {
+    display: block !important;
+  }
+
+  .resume-page .resume-aside {
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+
+  .resume-page article,
+  .resume-page .resume-role {
+    padding: 0.4rem 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    break-inside: avoid;
+  }
+
+  .resume-page ol,
+  .resume-page ul {
+    gap: 0.25rem !important;
+  }
+
+  .resume-page li {
+    break-inside: avoid;
+  }
+}

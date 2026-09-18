@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { DarkMode } from '../DarkMode';
 import Logo from './Logo';
 import Socials from './Socials';
@@ -9,6 +10,12 @@ const Header = () => {
         <div className="flex-grow">
           <Logo className="opacity-100 overflow-hidden !m-0 inline-block !flex-row !h-[60px] !w-[100px] duration-500 ease-in-out md:!w-0 md:border-0 md:opacity-0" />
         </div>
+        <Link
+          to="/resume"
+          className="text-sm uppercase tracking-wider whitespace-nowrap underline-offset-4 hover:underline hover:text-primary"
+        >
+          Resume
+        </Link>
         <Socials />
         <DarkMode />
       </nav>
