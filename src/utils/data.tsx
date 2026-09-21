@@ -39,6 +39,10 @@ import icoConvert from '../assets/ico-convert.svg';
 import icoAbTest from '../assets/ico-abtest.svg';
 import icoBem from '../assets/ico-bem.svg';
 import icoBootstrap from '../assets/ico-bootstrap.svg';
+import icoPhp from '../assets/ico-php.svg';
+import icoAcf from '../assets/ico-acf.svg';
+import icoDivi from '../assets/ico-divi.svg';
+import icoWoo from '../assets/ico-woo.svg';
 import { AboutItem, ResumeData } from './types';
 
 export const links = [
@@ -104,11 +108,23 @@ export const aboutData: AboutItem[] = [
             title: 'CRO & Platforms',
             skills: [
               { name: 'Shopify Liquid', icon: icoShopify },
-              { name: 'WordPress', icon: icoWordPress },
               { name: 'Convert.com', icon: icoConvert },
               { name: 'A/B Testing', icon: icoAbTest },
               { name: 'BEM', icon: icoBem },
               { name: 'Bootstrap', icon: icoBootstrap },
+            ],
+          },
+          {
+            id: 'wordpress',
+            title: 'WordPress & PHP',
+            skills: [
+              { name: 'WordPress', icon: icoWordPress },
+              { name: 'PHP', icon: icoPhp },
+              { name: 'WordPress Themes', icon: icoWordPress },
+              { name: 'Custom Plugins', icon: icoWordPress },
+              { name: 'ACF', icon: icoAcf },
+              { name: 'DIVI', icon: icoDivi },
+              { name: 'WooCommerce', icon: icoWoo },
             ],
           },
           {
@@ -242,15 +258,15 @@ export const timelineElements = [
     title: 'Frontend Developer',
     company: 'Dash10 Manage Services | Davao, Philippines',
     description: [
-      'Built websites from PSD and Figma into semantic HTML5/CSS3/JavaScript, integrated into an in-house CMS or WordPress.',
-      'WordPress frontend development using DIVI.',
+      'Built websites from Figma into semantic HTML5/CSS3/JavaScript, integrated into an in-house CMS or WordPress/Shopify.',
+      'WordPress custom theme development.',
       'Ensured the technical feasibility of UI/UX designs and adherence to SEO principles.',
       'Tested and debugged issues across different browsers and platforms.',
     ],
     date: '2017 - 2024',
     icon: 'work',
     color: 'purple',
-    tech: ['JavaScript', 'HTML', 'CSS', 'PHP', 'WordPress', 'DIVI', 'Figma'],
+    tech: ['JavaScript', 'HTML', 'CSS', 'PHP', 'WordPress', 'Shopify', 'Figma'],
   },
   {
     id: 4,
@@ -354,11 +370,11 @@ export const resumeData: ResumeData = {
   skills: [
     'HTML/CSS',
     'JavaScript / React JS',
-    'React / Next / TypeScript',
+    'React / TypeScript',
     'TailwindCSS / DaisyUI / Shadcn',
     'Bootstrap',
     'BEM Methodology',
-    'WordPress Frontend Development',
+    'WordPress Custom Development / PHP / MySQL',
     'Shopify Liquid / Convert.com CRO tooling',
     'Figma to HTML/CSS/JavaScript',
     'SEO Principles',
@@ -374,7 +390,6 @@ export const resumeData: ResumeData = {
         'Build and deploy A/B tests and conversion-focused experiments using JavaScript, HTML, CSS, and Shopify Liquid.',
         'Develop custom Shopify theme sections, components, and page modifications based on CRO requirements.',
         'Implement experiments on complex Shopify, SPA, and JavaScript-heavy websites, including dynamically rendered and hydrated content.',
-        'Work closely with CRO strategists and designers to translate experiment concepts into accurate, responsive implementations.',
         'Implement conversion tracking and experiment goals to ensure user interactions are properly measured.',
         'Troubleshoot dynamic DOM elements, third-party integrations, responsive layouts, and browser-specific issues.',
         'QA experiments across desktop and mobile devices, including iOS Safari, before and after deployment.',
@@ -400,7 +415,8 @@ export const resumeData: ResumeData = {
       company: 'Dash10 Manage Services | Davao, Philippines',
       date: '2017 - 2024',
       responsibilities: [
-        'Collaborate with the project manager and designer to build websites from PSD and Figma into semantic HTML5/CSS3/JavaScript, incorporated into an in-house CMS or WordPress. WordPress frontend development using DIVI.',
+        'Collaborate with the project manager and designer to build websites from Figma into semantic HTML5/CSS3/JavaScript, incorporated into an in-house CMS or WordPress/Shopify.',
+        'WordPress custom theme development.',
         'Ensure the technical feasibility of UI/UX designs.',
         'Good understanding of SEO principles and ensuring that applications adhere to them.',
         'Test and debug issues across different browsers and platforms.',
