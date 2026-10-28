@@ -38,7 +38,7 @@ const ResumeAside = ({ skills, education }: Props) => {
           {education.map(({ id, qualification, institution, date }) => (
             <li key={id}>
               <p className="font-bold">{qualification}</p>
-              <p className="resume-accent text-primary">{institution}</p>
+              <p className="resume-accent text-primary-text">{institution}</p>
               <p className="text-sm text-muted-foreground">{date}</p>
             </li>
           ))}

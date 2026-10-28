@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Mail, Phone } from 'lucide-react';
 import Container from '../global/Container';
 import SectionTitle from '../global/SectionTitle';
+import Reveal from '../motion/Reveal';
 import { Button } from '../ui/button';
 import ContactForm from './ContactForm';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { useToast } from '../ui/use-toast';
 
 const Contact = () => {
@@ -16,8 +16,7 @@ const Contact = () => {
         title: 'Copied to clipboard!',
         description: text,
       });
-    } catch (err) {
-      console.error('Failed to copy:', err);
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to copy',
@@ -27,37 +26,43 @@ const Contact = () => {
   };
 
   return (
-    <section className="scroll-mt-16 py-11 lg:py-28">
-      <SectionTitle text="Let's connect!" />
-      <Container className="flex gap-x-10 flex-grow gap-y-10 flex-wrap xl:gap-32 md:gap-y-16 xl:flex-nowrap">
-        <article className="xl:max-w-[450px] slide-in-left">
-          <h2 className="text-3xl mb-6">Hi there! 👋 </h2>
-          <p>
+    <Container className="py-20 md:py-28">
+      <SectionTitle eyebrow="Contact" text="Let's connect!" />
+      <div className="grid gap-10 lg:grid-cols-[2fr,3fr] lg:gap-16">
+        <Reveal>
+          <h3 className="mb-4 text-3xl">Hi there! 👋</h3>
+          <p className="leading-relaxed">
             I'm a passionate frontend developer who loves crafting clean,
             intuitive, and user-friendly web experiences. Whether you’re looking
             to collaborate on a project, have questions about my work, or just
             want to say hello, feel free to reach out!
           </p>
-          <div className="flex flex-col gap-2 mt-5">
+          <div className="mt-6 flex flex-col gap-3">
             <Button
-              className="lowercase justify-start text-md py-5"
+              variant="outline"
+              className="justify-start normal-case"
               onClick={() => handleCopy('mpclaspinas@gmail.com')}
+              aria-label="Copy email address: mpclaspinas@gmail.com"
             >
-              <FontAwesomeIcon icon={faEnvelope} />
-              <span className="ml-2">mpclaspinas@gmail.com</span>
+              <Mail aria-hidden="true" />
+              mpclaspinas@gmail.com
             </Button>
             <Button
-              className="lowercase justify-start text-md py-5"
+              variant="outline"
+              className="justify-start normal-case"
               onClick={() => handleCopy('+639309804835')}
+              aria-label="Copy phone number: +639309804835"
             >
-              <FontAwesomeIcon icon={faPhone} />
-              <span className="ml-2">+639309804835</span>
+              <Phone aria-hidden="true" />
+              +639309804835
             </Button>
           </div>
-        </article>
-        <ContactForm className="w-full slide-in-right" />
-      </Container>
-    </section>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <ContactForm />
+        </Reveal>
+      </div>
+    </Container>
   );
 };
 

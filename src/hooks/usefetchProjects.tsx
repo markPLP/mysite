@@ -8,19 +8,21 @@ import {
 
 import { useQuery } from '@tanstack/react-query';
 
-export const useFetchProjects = (filter: string): UseQueryReturn => {
+export const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+export const useFetchProjects = (filter: string = 'all'): UseQueryReturn => {
   const { isLoading, error, data } = useQuery<ProjectsQueryResponse>({
     queryKey: ['projects', filter],
     queryFn: async () => {
       let queryParams: any = { content_type: 'projects' };
 
-      if (filter === 'all') {
-        queryParams = queryParams;
-      } else if (filter) {
+      if (filter !== 'all') {
         queryParams['metadata.tags.sys.id[in]'] = filter;
       }
-
-      await new Promise((resolve) => setTimeout(resolve, 500));
 
       const response = await contentfulClient.getEntries(queryParams);
 
@@ -36,12 +38,7 @@ export const useFetchProjects = (filter: string): UseQueryReturn => {
             tech?: string[];
           };
 
-        const tags = item.metadata.tags.map((tagItem) => {
-          const { id } = tagItem.sys;
-          return id;
-        });
-
-        const { id } = item.sys;
+        const tags = item.metadata.tags.map((tagItem) => tagItem.sys.id);
 
         const largeImage = image?.fields?.file?.url
           ? image.fields.file.url.startsWith('http')
@@ -49,26 +46,24 @@ export const useFetchProjects = (filter: string): UseQueryReturn => {
             : `https:${image.fields.file.url}`
           : '';
 
-        const logoImage = logo?.fields?.file?.url || '';
-
         return {
-          id,
-          ghUrl: ghUrl || '', // Default to empty string if undefined
+          id: item.sys.id,
+          slug: slugify(title || item.sys.id),
+          ghUrl: ghUrl || '',
           largeImage,
-          liveUrl: liveUrl || '', // Default to empty string if undefined
-          logoImage,
-          title: title || '', // Default to empty string if undefined
-          tags: tags || [], // Default to empty array if undefined
-          description: description || '', // Default to empty string if undefined
+          liveUrl: liveUrl || '',
+          logoImage: logo?.fields?.file?.url || '',
+          title: title || '',
+          tags: tags || [],
+          description: description || '',
           tech,
         };
       });
 
       return { data: projectItems };
     },
-    staleTime: 60000, // Cache data for 1 minute
-    refetchOnWindowFocus: false, // Prevent refetching when the window regains focus
-    enabled: !!filter, // Fetch only when filter is not null/undefined
+    staleTime: 60000,
+    refetchOnWindowFocus: false,
   });
 
   return { isLoading, error, data };

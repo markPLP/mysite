@@ -1,15 +1,26 @@
+import { motion } from 'motion/react';
 import Container from '../global/Container';
 import HeroInfo from './HeroInfo';
 import HeroIntro from './HeroIntro';
 
 const HeroBanner = () => {
   return (
-    <section className="scroll-mt-16 lg:h-screen h-md:h-auto">
-      <Container className="pt-24 gap-y-8 grid grid-cols-1 items-center lg:grid-cols-2 lg:gap-8">
-        <HeroIntro className="flex flex-col items-start justify-center p-2 md:pb-10 lg:pt-10 slide-in-left" />
-        <HeroInfo className=" from-[#0d1224] border-[#1b2c68a0] relative rounded-lg border bg-gradient-to-r to-[#0a0d37] slide-in-right" />
-      </Container>
-    </section>
+    <Container className="grid grid-cols-1 items-center gap-12 py-12 md:py-20 lg:min-h-[calc(100vh-4rem)] lg:grid-cols-[1.15fr,0.85fr] lg:gap-10">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <HeroIntro />
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, x: 32 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <HeroInfo />
+      </motion.div>
+    </Container>
   );
 };
 

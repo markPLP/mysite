@@ -1,42 +1,19 @@
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Card, CardContent } from '../ui/card';
 import { Button } from '../ui/button';
-import Socials from '../navbar/Socials';
 import { useToast } from '../ui/use-toast';
-import { EmailForm, HandleBlurEvent } from '@/utils/types';
 
-const ContactForm = ({ className }: { className?: string }) => {
+const fieldClass =
+  'w-full rounded-md border border-input bg-background px-3 py-2 text-base transition-colors placeholder:text-muted-foreground focus-visible:border-primary';
+
+const ContactForm = ({ className = '' }: { className?: string }) => {
   const { toast } = useToast();
-
   const form = useRef<HTMLFormElement>(null);
+  const [sending, setSending] = useState(false);
 
-  const [inputStates, setInputStates] = useState({
-    user_name: false,
-    user_email: false,
-    message: false,
-  });
-
-  const handleFocus = (field: string) => {
-    setInputStates((prev) => ({ ...prev, [field]: true }));
-  };
-
-  const handleBlur = (field: string, event: HandleBlurEvent) => {
-    if (!event.target.value.trim()) {
-      setInputStates((prev) => ({ ...prev, [field]: false }));
-    }
-  };
-
-  const handleChange = (field: string, event: HandleBlurEvent) => {
-    if (event.target.value.trim()) {
-      setInputStates((prev) => ({ ...prev, [field]: true }));
-    } else {
-      setInputStates((prev) => ({ ...prev, [field]: false }));
-    }
-  };
-
-  const sendEmail = (e: React.FormEvent<EmailForm>) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSending(true);
 
     emailjs
       .sendForm('service_0ol65dl', 'template_5l1f6ld', form.current!, {
@@ -44,111 +21,76 @@ const ContactForm = ({ className }: { className?: string }) => {
       })
       .then(
         () => {
-          console.log('SUCCESS!');
           toast({
             title: 'Email sent successfully!',
             description: new Date().toLocaleTimeString(),
           });
-          // Clear form fields
           form.current?.reset();
-
-          // Reset input states
-          setInputStates({
-            user_name: false,
-            user_email: false,
-            message: false,
-          });
         },
-        (error) => {
-          console.log('FAILED...', error.text);
+        () => {
+          toast({
+            title: 'Message not sent',
+            description: 'Something went wrong. Please try again.',
+            variant: 'destructive',
+          });
         }
-      );
+      )
+      .finally(() => setSending(false));
   };
 
   return (
-    <Card className={`p-1 lg:p-3 ${className}`}>
-      <CardContent className="p-4 lg:pt-6">
-        <form ref={form} onSubmit={sendEmail} className="contact-form">
-          <h3 className="mb-5">Contact me</h3>
-          <fieldset className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-5 mb-3 w-full">
-            <div className="relative">
-              <label
-                className={`absolute transform duration-500 left-4 ${
-                  inputStates.user_name
-                    ? 'text-primary font-bold -translate-y-1/2 bg-white'
-                    : 'top-[12px]'
-                }`}
-              >
-                Name
-              </label>
-              <input
-                className={`bg-transparent h-12 w-full shadow-md border-2 px-3 py-2 rounded-md ${
-                  inputStates.user_name ? 'border-secondary' : ''
-                }`}
-                aria-label="Name"
-                type="text"
-                name="user_name"
-                onFocus={() => handleFocus('user_name')}
-                onBlur={(e) => handleBlur('user_name', e)}
-                onChange={(e) => handleChange('user_name', e)}
-                required
-              />
-            </div>
-            <div className="relative">
-              <label
-                className={`absolute transform duration-500  left-4 ${
-                  inputStates.user_email
-                    ? 'text-primary font-bold -translate-y-1/2 bg-white'
-                    : 'top-[12px]'
-                }`}
-              >
-                Email
-              </label>
-              <input
-                className={`!bg-transparent h-12 w-full shadow-md border-2 px-5 py-2 rounded-md ${
-                  inputStates.user_email ? 'border-secondary' : ''
-                }`}
-                aria-label="email"
-                type="email"
-                name="user_email"
-                onFocus={() => handleFocus('user_email')}
-                onBlur={(e) => handleBlur('user_email', e)}
-                onChange={(e) => handleChange('user_email', e)}
-                required
-              />
-            </div>
-            <div className="relative md:col-span-2">
-              <label
-                className={`absolute transform duration-500  left-4 ${
-                  inputStates.message
-                    ? 'text-primary font-bold -translate-y-1/2 bg-white'
-                    : 'top-[12px]'
-                }`}
-              >
-                Message
-              </label>
-              <textarea
-                className={`bg-transparent w-full shadow-md border-2 px-5 py-2 rounded-md ${
-                  inputStates.message ? 'border-secondary' : ''
-                }`}
-                aria-label="message"
-                name="message"
-                onFocus={() => handleFocus('message')}
-                onBlur={(e) => handleBlur('message', e)}
-                onChange={(e) => handleChange('message', e)}
-                rows={5}
-              />
-            </div>
-          </fieldset>
-          <div className="relative flex items-center gap-5 justify-between">
-            <Socials />
-            <Button type="submit" size="lg">
-              Send
-            </Button>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+    <form
+      ref={form}
+      onSubmit={sendEmail}
+      className={`rounded-xl border bg-card p-6 text-card-foreground md:p-8 ${className}`}
+    >
+      <h3 className="mb-6 text-2xl">Contact me</h3>
+      <div className="mb-6 grid gap-5 md:grid-cols-2">
+        <div>
+          <label htmlFor="user_name" className="mb-1.5 block text-sm font-medium">
+            Name
+          </label>
+          <input
+            id="user_name"
+            name="user_name"
+            type="text"
+            autoComplete="name"
+            required
+            className={fieldClass}
+          />
+        </div>
+        <div>
+          <label htmlFor="user_email" className="mb-1.5 block text-sm font-medium">
+            Email
+          </label>
+          <input
+            id="user_email"
+            name="user_email"
+            type="email"
+            autoComplete="email"
+            required
+            className={fieldClass}
+          />
+        </div>
+        <div className="md:col-span-2">
+          <label htmlFor="message" className="mb-1.5 block text-sm font-medium">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows={5}
+            required
+            className={fieldClass}
+          />
+        </div>
+      </div>
+      <div className="flex justify-end">
+        <Button type="submit" size="lg" disabled={sending}>
+          {sending ? 'Sending…' : 'Send'}
+        </Button>
+      </div>
+    </form>
   );
 };
 

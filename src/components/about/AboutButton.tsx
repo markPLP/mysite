@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 type AboutButtonProps = {
   data: { id: string; label: string }[];
   setCurrentItem: (id: string) => void;
@@ -11,24 +9,28 @@ const AboutButton = ({
   setCurrentItem,
   currentItemId,
 }: AboutButtonProps) => {
-  const [active, setActive] = useState<string>(currentItemId);
-  const handleClick = (id: string) => {
-    setCurrentItem(id);
-    setActive(id);
-  };
-
   return (
-    <div className="flex gap-4 justify-items-end md:rtl md:block">
-      {data?.map((item) => {
-        const { id, label } = item;
-
+    <div
+      role="tablist"
+      aria-label="About me"
+      className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] md:flex-col md:overflow-visible"
+    >
+      {data.map(({ id, label }) => {
+        const selected = id === currentItemId;
         return (
           <button
-            onClick={() => handleClick(id)}
             key={id}
-            className={`${
-              id === active ? 'border-primary' : 'border-transparent'
-            } text-right border-b-2 md:w-auto md:block md:mb-2`}
+            id={`about-tab-${id}`}
+            role="tab"
+            type="button"
+            aria-selected={selected}
+            aria-controls="about-panel"
+            onClick={() => setCurrentItem(id)}
+            className={`whitespace-nowrap rounded-md border px-4 py-2 text-left text-sm font-medium uppercase tracking-wider transition-colors ${
+              selected
+                ? 'border-primary bg-primary/10 text-primary-text'
+                : 'border-transparent text-muted-foreground hover:text-foreground'
+            }`}
           >
             {label}
           </button>

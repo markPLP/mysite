@@ -35,6 +35,7 @@ export type Asset = {
 
 export type ProjectItem = {
   id: string;
+  slug: string;
   ghUrl: string;
   // largeImage: string; // Simplified to just the URL
   largeImage: string;

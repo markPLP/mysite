@@ -1,59 +1,30 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFacebook,
-  faGithub,
-  faLinkedin,
-} from '@fortawesome/free-brands-svg-icons';
+import { Github, Linkedin } from 'lucide-react';
 
-import { Button } from '../ui/button';
-const Socials = () => {
+const socials = [
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/markmacz/',
+    Icon: Linkedin,
+  },
+  { label: 'GitHub', href: 'https://github.com/markPLP', Icon: Github },
+];
+
+const Socials = ({ className }: { className?: string }) => {
   return (
-    <ul className="flex gap-2 items-center">
-      <li>
-        <Button
-          variant="link"
-          className="p-0 transition-colors duration-300 ease-in-out hover:text-accent-foreground hover:bg-accent-background"
-          asChild
-        >
+    <ul className={`flex items-center gap-1 ${className ?? ''}`}>
+      {socials.map(({ label, href, Icon }) => (
+        <li key={label}>
           <a
-            href="https://www.facebook.com/"
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={label}
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md text-foreground/80 transition-colors hover:bg-accent hover:text-primary-text"
           >
-            <FontAwesomeIcon className="!w-8 !h-8 " icon={faFacebook} />
+            <Icon className="h-5 w-5" aria-hidden="true" />
           </a>
-        </Button>
-      </li>
-      <li>
-        <Button
-          variant="link"
-          className="p-0 transition-colors duration-300 ease-in-out hover:text-accent-foreground hover:bg-accent-background"
-          asChild
-        >
-          <a
-            href="https://www.linkedin.com/in/markmacz/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon className="!w-8 !h-8" icon={faLinkedin} />
-          </a>
-        </Button>
-      </li>
-      <li>
-        <Button
-          variant="link"
-          className="p-0 transition-colors duration-300 ease-in-out hover:text-accent-foreground hover:bg-accent-background"
-          asChild
-        >
-          <a
-            href="https://github.com/markPLP"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon className="!w-8 !h-8" icon={faGithub} />
-          </a>
-        </Button>
-      </li>
+        </li>
+      ))}
     </ul>
   );
 };

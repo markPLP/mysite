@@ -22,7 +22,7 @@ const ResumeExperience = ({ experience }: { experience: ResumeRole[] }) => {
                     {date}
                   </span>
                 </div>
-                <CardDescription className="resume-accent text-primary !mb-3">
+                <CardDescription className="resume-accent text-primary-text !mb-3">
                   {company}
                 </CardDescription>
               </CardHeader>

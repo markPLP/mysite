@@ -1,17 +1,4 @@
 import { nanoid } from 'nanoid';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import {
-//   faFacebook,
-//   faGithub,
-//   faLinkedin,
-// } from '@fortawesome/free-brands-svg-icons';
-import {
-  faHouse,
-  faUser,
-  faTrophy,
-  faFolderOpen,
-  faAddressBook,
-} from '@fortawesome/free-solid-svg-icons';
 
 import icoCss from '../assets/ico-CSS3.svg';
 import icoGit from '../assets/ico-Git.svg';
@@ -46,52 +33,10 @@ import icoWoo from '../assets/ico-woo.svg';
 import { AboutItem, ResumeData } from './types';
 
 export const links = [
-  {
-    id: nanoid(),
-    href: '#home',
-    text: 'home',
-    icon: (
-      <FontAwesomeIcon icon={faHouse} className="w-full h-full object-cover" />
-    ),
-  },
-  {
-    id: nanoid(),
-    href: '#about',
-    text: 'about',
-    icon: (
-      <FontAwesomeIcon icon={faUser} className="w-full h-full object-cover" />
-    ),
-  },
-  {
-    id: nanoid(),
-    href: '#experience',
-    text: 'experience',
-    icon: (
-      <FontAwesomeIcon icon={faTrophy} className="w-full h-full object-cover" />
-    ),
-  },
-  {
-    id: nanoid(),
-    href: '#projects',
-    text: 'projects',
-    icon: (
-      <FontAwesomeIcon
-        icon={faFolderOpen}
-        className="w-full h-full object-cover"
-      />
-    ),
-  },
-  {
-    id: nanoid(),
-    href: '#contact',
-    text: 'contact',
-    icon: (
-      <FontAwesomeIcon
-        icon={faAddressBook}
-        className="w-full h-full object-cover"
-      />
-    ),
-  },
+  { href: '/#about', text: 'About', id: 'about' },
+  { href: '/#experience', text: 'Experience', id: 'experience' },
+  { href: '/#projects', text: 'Projects', id: 'projects' },
+  { href: '/#contact', text: 'Contact', id: 'contact' },
 ];
 
 export const aboutData: AboutItem[] = [

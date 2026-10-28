@@ -6,14 +6,14 @@ const AboutInfoDescription = ({
   description: DescriptionItem;
 }) => {
   if (description.type === 'text') {
-    return <p className="mb-4">{description.content as string}</p>;
+    return <p className="mb-4 leading-relaxed">{description.content as string}</p>;
   }
 
   if (description.type === 'list') {
     return (
-      <ul className="list-disc pl-5 mb-4">
-        {(description.content as string[]).map((listItem, listIndex) => (
-          <li key={listIndex}>{listItem}</li>
+      <ul className="mb-4 list-disc space-y-1 pl-5">
+        {(description.content as string[]).map((listItem) => (
+          <li key={listItem}>{listItem}</li>
         ))}
       </ul>
     );
@@ -22,28 +22,29 @@ const AboutInfoDescription = ({
   if (description.type === 'skills') {
     return (
       <div>
-        {(description.content as SkillsCategory[]).map(
-          (category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-4">
-              <h3 className="text-lg font-semibold mb-2">{category.title}</h3>
-              <ul className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <li
-                    key={skillIndex}
-                    className="flex items-center gap-2 px-4 py-2 border rounded-md bg-custom-gradient text-xs"
-                  >
-                    <img
-                      src={skill.icon}
-                      className="w-4 h-4 object-fit"
-                      alt={skill.name}
-                    />
-                    {skill.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        )}
+        {(description.content as SkillsCategory[]).map((category) => (
+          <div key={category.id} className="mb-5 last:mb-0">
+            <h4 className="mb-2 text-sm font-semibold tracking-widest text-muted-foreground">
+              {category.title}
+            </h4>
+            <ul className="flex flex-wrap gap-2">
+              {category.skills.map((skill) => (
+                <li
+                  key={skill.name}
+                  className="flex items-center gap-2 rounded-md border bg-secondary px-3 py-1.5 text-xs text-secondary-foreground"
+                >
+                  <img
+                    src={skill.icon}
+                    className="h-4 w-4 object-contain"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  {skill.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     );
   }

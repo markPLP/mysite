@@ -1,23 +1,15 @@
-const Logo = ({ className }: { className?: string }) => {
+import { Link } from 'react-router-dom';
+
+const Logo = () => {
   return (
-    <div
-      className={`logo block border-[2px] w-auto m-auto p-3 mt-8 ${className}`}
+    <Link
+      to="/"
+      aria-label="MPLP — Mark Phillip, home"
+      className="logo-mark flex h-11 w-11 flex-col items-center justify-center font-heading text-[15px] font-bold leading-[0.95] transition-transform hover:scale-105"
     >
-      <span className="block font-heading font-bold text-[30px] leading-7">
-        MP
-      </span>
-      <span className="block font-heading font-bold text-[30px] leading-7">
-        LP
-      </span>
-      {/* <Link to="/">
-        <span className="block font-heading font-bold text-[30px] leading-7">
-          MP
-        </span>
-        <span className="block font-heading font-bold text-[30px] leading-7">
-          LP
-        </span>
-      </Link> */}
-    </div>
+      <span>MP</span>
+      <span>LP</span>
+    </Link>
   );
 };
 

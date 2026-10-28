@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['Roboto Condensed', 'serif'],
-        regular: ['Roboto', 'serif'],
+        heading: ['"Roboto Condensed Variable"', 'sans-serif'],
+        regular: ['"Roboto Variable"', 'sans-serif'],
       },
       // keyframes: {
       //   slideLeft: {
@@ -72,6 +72,7 @@ module.exports = {
         primary: {
           DEFAULT: 'hsl(var(--primary) / 1)',
           40: 'hsl(var(--primary) / 0.4)', // 40% opacity
+          text: 'hsl(var(--primary-text))', // accent for text; --primary stays for fills
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {

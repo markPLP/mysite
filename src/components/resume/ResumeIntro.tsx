@@ -1,6 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload, faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { Download, Mail, MapPin } from 'lucide-react';
 import { Button } from '../ui/button';
 import { ResumeData } from '@/utils/types';
 
@@ -22,7 +20,7 @@ const ResumeIntro = ({
       <h1 className="text-5xl md:text-6xl font-bold tracking-wider uppercase mb-2">
         {name}
       </h1>
-      <p className="resume-accent text-primary text-xl uppercase tracking-[0.2em] mb-6">
+      <p className="resume-accent text-primary-text text-xl uppercase tracking-[0.2em] mb-6">
         {role}
       </p>
 
@@ -32,21 +30,21 @@ const ResumeIntro = ({
         <li>
           <a
             href={`mailto:${email}`}
-            className="inline-flex items-center gap-2 underline-offset-4 hover:underline hover:text-primary"
+            className="inline-flex items-center gap-2 underline-offset-4 hover:underline hover:text-primary-text"
           >
-            <FontAwesomeIcon icon={faEnvelope} className="w-4 h-4" />
+            <Mail className="w-4 h-4" aria-hidden="true" />
             {email}
           </a>
         </li>
         <li className="inline-flex items-center gap-2 text-muted-foreground">
-          <FontAwesomeIcon icon={faLocationDot} className="w-4 h-4" />
+          <MapPin className="w-4 h-4" aria-hidden="true" />
           {location}
         </li>
       </ul>
 
       <Button asChild className="print:hidden">
         <a href={pdfUrl} download>
-          <FontAwesomeIcon icon={faDownload} className="w-4 h-4" />
+          <Download className="w-4 h-4" aria-hidden="true" />
           Download PDF
         </a>
       </Button>

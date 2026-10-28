@@ -1,91 +1,34 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
-import { SidebarProvider } from '@/context/SidebarContext';
-import Header from '@/components/navbar/Header';
-import Navbar from '@/components/navbar/Navbar';
-import NavbarMobile from '@/components/navbar/NavbarMobile';
-import NinjaLoader from '@/components/global/NinjaLoader';
-import { onLoadIntersectionObserver } from '@/utils/observers';
+import SiteHeader from '@/components/navbar/SiteHeader';
+import SiteFooter from '@/components/layout/SiteFooter';
+import HeroBanner from '@/components/hero/HeroBanner';
+import About from '@/components/about/About';
+import Timeline from '@/components/experience/Timeline';
+import ProjectWrapper from '@/components/projects/ProjectWrapper';
+import Contact from '@/components/contact/Contact';
 
-// Lazy load sections
-const HeroBanner = lazy(() => import('@/components/hero/HeroBanner'));
-const About = lazy(() => import('@/components/about/About'));
-const Timeline = lazy(() => import('@/components/experience/Timeline'));
-const ProjectWrapper = lazy(() => import('@/components/projects/ProjectWrapper'));
-const Contact = lazy(() => import('@/components/contact/Contact'));
-
+// ids drive the nav scroll-spy and the /#hash links (see utils/data.tsx `links`).
 const sections = [
-  { id: 'home', component: HeroBanner },
-  { id: 'about', component: About },
-  { id: 'experience', component: Timeline },
-  { id: 'projects', component: ProjectWrapper },
-  { id: 'contact', component: Contact },
+  { id: 'home', label: 'Home', component: HeroBanner },
+  { id: 'about', label: 'About', component: About },
+  { id: 'experience', label: 'Experience', component: Timeline },
+  { id: 'projects', label: 'Projects', component: ProjectWrapper },
+  { id: 'contact', label: 'Contact', component: Contact },
 ];
 
 const Home = () => {
-  const [visibleSections, setVisibleSections] = useState<string[]>([]);
-  const [isAppReady, setIsAppReady] = useState(false); // App loading state
-
-  // Simulate loading before showing the app
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsAppReady(true);
-    }, 6000); // Adjust timing as needed
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Initialize Intersection Observer after the app is ready
-  useEffect(() => {
-    if (isAppReady) {
-      onLoadIntersectionObserver({ setVisibleSections, sections });
-
-      // Ensure at least the "home" section is visible on initial load
-      setVisibleSections(['home']);
-    }
-  }, [isAppReady]);
-
-  // Show loading screen until the app is ready
-  if (!isAppReady) {
-    return <NinjaLoader />;
-  }
-
   return (
     <>
-      <SidebarProvider>
-        <Header />
-        <Navbar />
-      </SidebarProvider>
-
+      <SiteHeader />
       <main>
-        {sections.map(({ id, component: Section }) => (
-          <section
-            key={id}
-            id={id}
-            className="scroll-mt-28 min-h-[100vh] overflow-x-hidden"
-          >
-            {visibleSections.includes(id) ? (
-              <Suspense fallback={<LoadingSpinner />}>
-                <Section />
-              </Suspense>
-            ) : (
-              <div /> // Placeholder until section loads
-            )}
+        {sections.map(({ id, label, component: Section }) => (
+          <section key={id} id={id} aria-label={label}>
+            <Section />
           </section>
         ))}
       </main>
-
-      <NavbarMobile />
+      <SiteFooter />
     </>
   );
 };
 
 export default Home;
-
-// Loading Spinner (for sections)
-function LoadingSpinner() {
-  return (
-    <div className="flex justify-center items-center min-h-[100vh]">
-      <div className="animate-spin rounded-full border-t-4 border-blue-600 h-12 w-12"></div>
-    </div>
-  );
-}

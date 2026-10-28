@@ -16,11 +16,15 @@ const AboutInfo = ({ currentItemId, data }: AboutInfoProps) => {
   if (!currentItem) return null;
 
   return (
-    <div>
-      <p className="uppercase text-xl mb-3">{currentItem.label}</p>
-      <h2 className="text-3xl font-bold text-primary mb-6 border-b-2 pb-3">
+    <div
+      id="about-panel"
+      role="tabpanel"
+      aria-labelledby={`about-tab-${currentItem.id}`}
+      className="rounded-xl border bg-card p-6 text-card-foreground md:p-8"
+    >
+      <h3 className="mb-6 border-b pb-4 text-2xl font-bold text-primary-text md:text-3xl">
         {currentItem.title}
-      </h2>
+      </h3>
       {currentItem.description.map((descItem, index) => (
         <AboutInfoDescription key={index} description={descItem} />
       ))}

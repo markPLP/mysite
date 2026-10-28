@@ -1,66 +1,81 @@
+import { memo, useMemo, useState } from 'react';
 import { useFetchProjects } from '@/hooks/usefetchProjects';
-import ProjectCarousel from './ProjectCarousel';
-import { memo, useEffect, useState, useCallback, lazy } from 'react';
-// import ProjectTabs from './ProjectTabs';
-const ProjectTabs = lazy(() => import('./ProjectTabs'));
-import ProjectInfo from './ProjectInfo';
-import { ProjectItem } from '@/utils/types';
-import ProjectImage from './ProjectImage';
-import { useTheme } from '../theme-provider';
+import ProjectCard from './ProjectCard';
+import Reveal from '../motion/Reveal';
+import { Skeleton } from '../ui/skeleton';
 
 const Projects = () => {
-  const [filter, setFilter] = useState<string>('');
-  const { isLoading, error, data } = useFetchProjects(filter || 'all');
-  const [prodBg, setProdBg] = useState<string>('');
-  const [websiteInfo, setWebsiteInfo] = useState<ProjectItem | null>(null);
+  const [filter, setFilter] = useState('all');
+  const { isLoading, error, data } = useFetchProjects('all');
 
-  useEffect(() => {
-    if (data && data.data.length > 0) {
-      setWebsiteInfo(data.data[0]);
-      setProdBg(data.data[0].largeImage);
-    }
-  }, [data]);
+  const tags = useMemo(
+    () => [
+      'all',
+      ...new Set(
+        data?.data.flatMap((p) => p.tags.map((tag) => tag.toLowerCase()))
+      ),
+    ],
+    [data]
+  );
 
-  const handleClick = useCallback((project: ProjectItem) => {
-    const newLargeImage = project.largeImage;
-    setProdBg(newLargeImage);
-    setWebsiteInfo(project);
-  }, []);
+  const projects = useMemo(
+    () =>
+      (data?.data ?? []).filter(
+        (p) =>
+          filter === 'all' ||
+          p.tags.map((tag) => tag.toLowerCase()).includes(filter)
+      ),
+    [data, filter]
+  );
 
-  const handleGetTag = useCallback((tag: string) => {
-    setFilter(tag);
-  }, []);
-
-  if (error) return <div>Failed to load projects.</div>;
-  const theme = useTheme();
+  if (error) {
+    return (
+      <p role="alert" className="text-muted-foreground">
+        Couldn't load projects right now. Please try again later.
+      </p>
+    );
+  }
 
   return (
-    <div className="align-element flex flex-col m-auto pb-0 px-0 max-w-[calc(100%-50px)] md:max-w-[calc(100%-77px)] md:mr-0 md:px-8 lg:max-w-[88%] lg:gap-y-[10px] xl:mr-auto">
+    <>
       <div
-        className={`mb-7 p-3 md:from-[#0d122498] md:bg-gradient-to-r md:to-[#0a0d3798] border-0 md:border md:p-9 md:mr-0 md:border-[#1b2c68a0] relative rounded-lg fade-in-up ${
-          theme.theme === 'light' && 'bg-gray-800'
-        }`}
+        role="group"
+        aria-label="Filter projects"
+        className="mb-8 flex flex-wrap gap-2"
       >
-        <ProjectTabs handleGetTag={handleGetTag} filter={filter} />
-        <ProjectCarousel
-          isLoading={isLoading}
-          data={data}
-          handleClick={handleClick}
-        />
+        {tags.map((tag) => (
+          <button
+            key={tag}
+            type="button"
+            aria-pressed={tag === filter}
+            onClick={() => setFilter(tag)}
+            className={`rounded-full border px-4 py-1.5 text-xs font-medium uppercase tracking-wider transition-colors ${
+              tag === filter
+                ? 'border-primary bg-primary text-primary-foreground'
+                : 'hover:border-primary/60 hover:text-primary-text'
+            }`}
+          >
+            {tag}
+          </button>
+        ))}
       </div>
-      <div className="lg:grid lg:grid-cols-2 gap-8">
-        <ProjectImage
-          prodBg={prodBg}
-          isLoading={isLoading}
-          className="slide-in-left"
-        />
-        <ProjectInfo
-          data={websiteInfo}
-          isLoading={isLoading}
-          className="slide-in-right"
-        />
-      </div>
-    </div>
+
+      <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {isLoading
+          ? Array.from({ length: 6 }, (_, i) => (
+              <li key={i}>
+                <Skeleton className="aspect-[4/3] w-full rounded-xl" />
+              </li>
+            ))
+          : projects.map((project, i) => (
+              <li key={project.id}>
+                <Reveal delay={(i % 3) * 0.08} className="h-full">
+                  <ProjectCard project={project} />
+                </Reveal>
+              </li>
+            ))}
+      </ul>
+    </>
   );
 };
 
